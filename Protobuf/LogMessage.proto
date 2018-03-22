@@ -11,4 +11,7 @@ message ProtoLogMessage {
     string logMessage = 2;
     string logMessageType = 3;
     string appId = 4;
+    string appName = 5;
+    string space = 6;
+    string organization = 7;
 }

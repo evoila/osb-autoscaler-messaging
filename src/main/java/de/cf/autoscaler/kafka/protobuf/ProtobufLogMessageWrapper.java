@@ -52,6 +52,36 @@ public final class ProtobufLogMessageWrapper {
      */
     com.google.protobuf.ByteString
         getAppIdBytes();
+
+    /**
+     * <code>string appName = 5;</code>
+     */
+    java.lang.String getAppName();
+    /**
+     * <code>string appName = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getAppNameBytes();
+
+    /**
+     * <code>string space = 6;</code>
+     */
+    java.lang.String getSpace();
+    /**
+     * <code>string space = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getSpaceBytes();
+
+    /**
+     * <code>string organization = 7;</code>
+     */
+    java.lang.String getOrganization();
+    /**
+     * <code>string organization = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrganizationBytes();
   }
   /**
    * Protobuf type {@code autoscaler.ProtoLogMessage}
@@ -70,6 +100,9 @@ public final class ProtobufLogMessageWrapper {
       logMessage_ = "";
       logMessageType_ = "";
       appId_ = "";
+      appName_ = "";
+      space_ = "";
+      organization_ = "";
     }
 
     @java.lang.Override
@@ -124,6 +157,24 @@ public final class ProtobufLogMessageWrapper {
               java.lang.String s = input.readStringRequireUtf8();
 
               appId_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              appName_ = s;
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              space_ = s;
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              organization_ = s;
               break;
             }
           }
@@ -261,6 +312,108 @@ public final class ProtobufLogMessageWrapper {
       }
     }
 
+    public static final int APPNAME_FIELD_NUMBER = 5;
+    private volatile java.lang.Object appName_;
+    /**
+     * <code>string appName = 5;</code>
+     */
+    public java.lang.String getAppName() {
+      java.lang.Object ref = appName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        appName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string appName = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAppNameBytes() {
+      java.lang.Object ref = appName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        appName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SPACE_FIELD_NUMBER = 6;
+    private volatile java.lang.Object space_;
+    /**
+     * <code>string space = 6;</code>
+     */
+    public java.lang.String getSpace() {
+      java.lang.Object ref = space_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        space_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string space = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSpaceBytes() {
+      java.lang.Object ref = space_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        space_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ORGANIZATION_FIELD_NUMBER = 7;
+    private volatile java.lang.Object organization_;
+    /**
+     * <code>string organization = 7;</code>
+     */
+    public java.lang.String getOrganization() {
+      java.lang.Object ref = organization_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        organization_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string organization = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrganizationBytes() {
+      java.lang.Object ref = organization_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        organization_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -285,6 +438,15 @@ public final class ProtobufLogMessageWrapper {
       if (!getAppIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, appId_);
       }
+      if (!getAppNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, appName_);
+      }
+      if (!getSpaceBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, space_);
+      }
+      if (!getOrganizationBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, organization_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -305,6 +467,15 @@ public final class ProtobufLogMessageWrapper {
       }
       if (!getAppIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, appId_);
+      }
+      if (!getAppNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, appName_);
+      }
+      if (!getSpaceBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, space_);
+      }
+      if (!getOrganizationBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, organization_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -330,6 +501,12 @@ public final class ProtobufLogMessageWrapper {
           .equals(other.getLogMessageType());
       result = result && getAppId()
           .equals(other.getAppId());
+      result = result && getAppName()
+          .equals(other.getAppName());
+      result = result && getSpace()
+          .equals(other.getSpace());
+      result = result && getOrganization()
+          .equals(other.getOrganization());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -350,6 +527,12 @@ public final class ProtobufLogMessageWrapper {
       hash = (53 * hash) + getLogMessageType().hashCode();
       hash = (37 * hash) + APPID_FIELD_NUMBER;
       hash = (53 * hash) + getAppId().hashCode();
+      hash = (37 * hash) + APPNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getAppName().hashCode();
+      hash = (37 * hash) + SPACE_FIELD_NUMBER;
+      hash = (53 * hash) + getSpace().hashCode();
+      hash = (37 * hash) + ORGANIZATION_FIELD_NUMBER;
+      hash = (53 * hash) + getOrganization().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -487,6 +670,12 @@ public final class ProtobufLogMessageWrapper {
 
         appId_ = "";
 
+        appName_ = "";
+
+        space_ = "";
+
+        organization_ = "";
+
         return this;
       }
 
@@ -513,6 +702,9 @@ public final class ProtobufLogMessageWrapper {
         result.logMessage_ = logMessage_;
         result.logMessageType_ = logMessageType_;
         result.appId_ = appId_;
+        result.appName_ = appName_;
+        result.space_ = space_;
+        result.organization_ = organization_;
         onBuilt();
         return result;
       }
@@ -567,6 +759,18 @@ public final class ProtobufLogMessageWrapper {
         }
         if (!other.getAppId().isEmpty()) {
           appId_ = other.appId_;
+          onChanged();
+        }
+        if (!other.getAppName().isEmpty()) {
+          appName_ = other.appName_;
+          onChanged();
+        }
+        if (!other.getSpace().isEmpty()) {
+          space_ = other.space_;
+          onChanged();
+        }
+        if (!other.getOrganization().isEmpty()) {
+          organization_ = other.organization_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -828,6 +1032,213 @@ public final class ProtobufLogMessageWrapper {
         onChanged();
         return this;
       }
+
+      private java.lang.Object appName_ = "";
+      /**
+       * <code>string appName = 5;</code>
+       */
+      public java.lang.String getAppName() {
+        java.lang.Object ref = appName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          appName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string appName = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAppNameBytes() {
+        java.lang.Object ref = appName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string appName = 5;</code>
+       */
+      public Builder setAppName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        appName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string appName = 5;</code>
+       */
+      public Builder clearAppName() {
+        
+        appName_ = getDefaultInstance().getAppName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string appName = 5;</code>
+       */
+      public Builder setAppNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        appName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object space_ = "";
+      /**
+       * <code>string space = 6;</code>
+       */
+      public java.lang.String getSpace() {
+        java.lang.Object ref = space_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          space_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string space = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSpaceBytes() {
+        java.lang.Object ref = space_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          space_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string space = 6;</code>
+       */
+      public Builder setSpace(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        space_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string space = 6;</code>
+       */
+      public Builder clearSpace() {
+        
+        space_ = getDefaultInstance().getSpace();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string space = 6;</code>
+       */
+      public Builder setSpaceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        space_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object organization_ = "";
+      /**
+       * <code>string organization = 7;</code>
+       */
+      public java.lang.String getOrganization() {
+        java.lang.Object ref = organization_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          organization_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string organization = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrganizationBytes() {
+        java.lang.Object ref = organization_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          organization_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string organization = 7;</code>
+       */
+      public Builder setOrganization(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        organization_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organization = 7;</code>
+       */
+      public Builder clearOrganization() {
+        
+        organization_ = getDefaultInstance().getOrganization();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organization = 7;</code>
+       */
+      public Builder setOrganizationBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        organization_ = value;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
@@ -891,13 +1302,14 @@ public final class ProtobufLogMessageWrapper {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020LogMessage.proto\022\nautoscaler\"_\n\017ProtoL" +
-      "ogMessage\022\021\n\ttimestamp\030\001 \001(\003\022\022\n\nlogMessa" +
-      "ge\030\002 \001(\t\022\026\n\016logMessageType\030\003 \001(\t\022\r\n\005appI" +
-      "d\030\004 \001(\tBi\n\037de.cf.autoscaler.kafka.protob" +
-      "ufB\031ProtobufLogMessageWrapper\252\002*de.cf.au" +
-      "toscaler.ProtobufLogMessageWrapperb\006prot" +
-      "o3"
+      "\n\020LogMessage.proto\022\nautoscaler\"\225\001\n\017Proto" +
+      "LogMessage\022\021\n\ttimestamp\030\001 \001(\003\022\022\n\nlogMess" +
+      "age\030\002 \001(\t\022\026\n\016logMessageType\030\003 \001(\t\022\r\n\005app" +
+      "Id\030\004 \001(\t\022\017\n\007appName\030\005 \001(\t\022\r\n\005space\030\006 \001(\t" +
+      "\022\024\n\014organization\030\007 \001(\tBi\n\037de.cf.autoscal" +
+      "er.kafka.protobufB\031ProtobufLogMessageWra" +
+      "pper\252\002*de.cf.autoscaler.ProtobufLogMessa" +
+      "geWrapperb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -916,7 +1328,7 @@ public final class ProtobufLogMessageWrapper {
     internal_static_autoscaler_ProtoLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_autoscaler_ProtoLogMessage_descriptor,
-        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "AppId", });
+        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "AppId", "AppName", "Space", "Organization", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
