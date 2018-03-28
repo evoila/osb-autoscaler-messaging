@@ -4,12 +4,12 @@ package autoscaler;
 // [END declaration]
 
 // [START java_declaration]
-option java_package = "de.cf.autoscaler.protobuf";
-option java_outer_classname = "ProtobufContainerMetricWrapper";
+option java_package = "de.evoila.cf.autoscaler.kafka.protobuf";
+option java_outer_classname = "PbContainerMetric";
 // [END java_declaration]
 
 // [START csharp_declaration]
-option csharp_namespace = "de.cf.autoscaler.ProtobufContainerMetricWrapper";
+option csharp_namespace = "de.evoila.cf.autoscaler.PbContainerMetric";
 // [END csharp_declaration]
 
 message ProtoContainerMetric {

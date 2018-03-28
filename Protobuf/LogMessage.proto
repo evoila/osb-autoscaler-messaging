@@ -1,0 +1,17 @@
+syntax = "proto3";
+package autoscaler;
+
+option java_package = "de.evoila.cf.autoscaler.kafka.protobuf";
+option java_outer_classname = "PbLogMessage";
+
+option csharp_namespace = "de.evoila.cf.autoscaler.PbLogMessage";
+
+message ProtoLogMessage {
+    int64 timestamp = 1;
+    string logMessage = 2;
+    string logMessageType = 3;
+    string appId = 4;
+    string appName = 5;
+    string space = 6;
+    string organization = 7;
+}

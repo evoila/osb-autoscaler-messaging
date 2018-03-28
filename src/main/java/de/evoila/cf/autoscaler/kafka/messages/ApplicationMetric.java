@@ -1,6 +1,6 @@
 package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.evoila.cf.autoscaler.kafka.protobuf.ProtobufApplicationMetricWrapper;
+import de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric;
 
 /**
  * Wrapper class to store information about the state of an application in one period.
@@ -80,10 +80,10 @@ public class ApplicationMetric implements AutoscalerMetric {
 	}
 	
 	/**
-	 * Constructor for processing a {@linkplain ProtobufApplicationMetricWrapper.ProtoApplicationMetric}.
+	 * Constructor for processing a {@linkplain PbApplicationMetric.ProtoApplicationMetric}.
 	 * @param proto Protobuf application metric to get fields from
 	 */
-	public ApplicationMetric(ProtobufApplicationMetricWrapper.ProtoApplicationMetric proto) {
+	public ApplicationMetric(PbApplicationMetric.ProtoApplicationMetric proto) {
 		this(proto.getCpu(), proto.getRam(), proto.getInstanceCount(), proto.getRequests(), proto.getLatency(), proto.getQuotient(),
 				proto.getTimestamp(), proto.getAppId(), proto.getMetricName(), proto.getDescription());
 	}

@@ -4,12 +4,12 @@ package autoscaler;
 // [END declaration]
 
 // [START java_declaration]
-option java_package = "de.cf.autoscaler.protobuf";
-option java_outer_classname = "ProtobufPredictionWrapper";
+option java_package = "de.evoila.cf.autoscaler.kafka.protobuf";
+option java_outer_classname = "PbPrediction";
 // [END java_declaration]
 
 // [START csharp_declaration]
-option csharp_namespace = "de.cf.autoscaler.ProtobufPredictionWrapper";
+option csharp_namespace = "de.cf.autoscaler.PbPrediction";
 // [END csharp_declaration]
 
 message ProtoPrediction {

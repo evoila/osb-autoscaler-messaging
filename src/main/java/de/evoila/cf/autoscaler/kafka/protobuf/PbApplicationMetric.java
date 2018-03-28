@@ -3,8 +3,8 @@
 
 package de.evoila.cf.autoscaler.kafka.protobuf;
 
-public final class ProtobufApplicationMetricWrapper {
-  private ProtobufApplicationMetricWrapper() {}
+public final class PbApplicationMetric {
+  private PbApplicationMetric() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -112,8 +112,7 @@ public final class ProtobufApplicationMetricWrapper {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    @SuppressWarnings("unused")
-	private ProtoApplicationMetric(
+    private ProtoApplicationMetric(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -199,14 +198,14 @@ public final class ProtobufApplicationMetricWrapper {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ProtobufApplicationMetricWrapper.internal_static_autoscaler_ProtoApplicationMetric_descriptor;
+      return de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.internal_static_autoscaler_ProtoApplicationMetric_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ProtobufApplicationMetricWrapper.internal_static_autoscaler_ProtoApplicationMetric_fieldAccessorTable
+      return de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.internal_static_autoscaler_ProtoApplicationMetric_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ProtobufApplicationMetricWrapper.ProtoApplicationMetric.class, ProtobufApplicationMetricWrapper.ProtoApplicationMetric.Builder.class);
+              de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.class, de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.Builder.class);
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 1;
@@ -470,10 +469,10 @@ public final class ProtobufApplicationMetricWrapper {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ProtobufApplicationMetricWrapper.ProtoApplicationMetric)) {
+      if (!(obj instanceof de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric)) {
         return super.equals(obj);
       }
-      ProtobufApplicationMetricWrapper.ProtoApplicationMetric other = (ProtobufApplicationMetricWrapper.ProtoApplicationMetric) obj;
+      de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric other = (de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric) obj;
 
       boolean result = true;
       result = result && (getTimestamp()
@@ -499,8 +498,7 @@ public final class ProtobufApplicationMetricWrapper {
       return result;
     }
 
-    @SuppressWarnings("unchecked")
-	@java.lang.Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -534,58 +532,58 @@ public final class ProtobufApplicationMetricWrapper {
       return hash;
     }
 
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(byte[] data)
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(java.io.InputStream input)
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseDelimitedFrom(java.io.InputStream input)
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseDelimitedFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric parseFrom(
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -597,7 +595,7 @@ public final class ProtobufApplicationMetricWrapper {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ProtobufApplicationMetricWrapper.ProtoApplicationMetric prototype) {
+    public static Builder newBuilder(de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -617,20 +615,20 @@ public final class ProtobufApplicationMetricWrapper {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:autoscaler.ProtoApplicationMetric)
-        ProtobufApplicationMetricWrapper.ProtoApplicationMetricOrBuilder {
+        de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetricOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ProtobufApplicationMetricWrapper.internal_static_autoscaler_ProtoApplicationMetric_descriptor;
+        return de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.internal_static_autoscaler_ProtoApplicationMetric_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ProtobufApplicationMetricWrapper.internal_static_autoscaler_ProtoApplicationMetric_fieldAccessorTable
+        return de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.internal_static_autoscaler_ProtoApplicationMetric_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ProtobufApplicationMetricWrapper.ProtoApplicationMetric.class, ProtobufApplicationMetricWrapper.ProtoApplicationMetric.Builder.class);
+                de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.class, de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.Builder.class);
       }
 
-      // Construct using de.cf.autoscaler.protobuf.ProtobufApplicationMetricWrapper.ProtoApplicationMetric.newBuilder()
+      // Construct using de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -672,23 +670,23 @@ public final class ProtobufApplicationMetricWrapper {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ProtobufApplicationMetricWrapper.internal_static_autoscaler_ProtoApplicationMetric_descriptor;
+        return de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.internal_static_autoscaler_ProtoApplicationMetric_descriptor;
       }
 
-      public ProtobufApplicationMetricWrapper.ProtoApplicationMetric getDefaultInstanceForType() {
-        return ProtobufApplicationMetricWrapper.ProtoApplicationMetric.getDefaultInstance();
+      public de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric getDefaultInstanceForType() {
+        return de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.getDefaultInstance();
       }
 
-      public ProtobufApplicationMetricWrapper.ProtoApplicationMetric build() {
-        ProtobufApplicationMetricWrapper.ProtoApplicationMetric result = buildPartial();
+      public de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric build() {
+        de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public ProtobufApplicationMetricWrapper.ProtoApplicationMetric buildPartial() {
-        ProtobufApplicationMetricWrapper.ProtoApplicationMetric result = new ProtobufApplicationMetricWrapper.ProtoApplicationMetric(this);
+      public de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric buildPartial() {
+        de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric result = new de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric(this);
         result.timestamp_ = timestamp_;
         result.metricName_ = metricName_;
         result.appId_ = appId_;
@@ -730,16 +728,16 @@ public final class ProtobufApplicationMetricWrapper {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ProtobufApplicationMetricWrapper.ProtoApplicationMetric) {
-          return mergeFrom((ProtobufApplicationMetricWrapper.ProtoApplicationMetric)other);
+        if (other instanceof de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric) {
+          return mergeFrom((de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ProtobufApplicationMetricWrapper.ProtoApplicationMetric other) {
-        if (other == ProtobufApplicationMetricWrapper.ProtoApplicationMetric.getDefaultInstance()) return this;
+      public Builder mergeFrom(de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric other) {
+        if (other == de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric.getDefaultInstance()) return this;
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
         }
@@ -785,11 +783,11 @@ public final class ProtobufApplicationMetricWrapper {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ProtobufApplicationMetricWrapper.ProtoApplicationMetric parsedMessage = null;
+        de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ProtobufApplicationMetricWrapper.ProtoApplicationMetric) e.getUnfinishedMessage();
+          parsedMessage = (de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1202,12 +1200,12 @@ public final class ProtobufApplicationMetricWrapper {
     }
 
     // @@protoc_insertion_point(class_scope:autoscaler.ProtoApplicationMetric)
-    private static final ProtobufApplicationMetricWrapper.ProtoApplicationMetric DEFAULT_INSTANCE;
+    private static final de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ProtobufApplicationMetricWrapper.ProtoApplicationMetric();
+      DEFAULT_INSTANCE = new de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric();
     }
 
-    public static ProtobufApplicationMetricWrapper.ProtoApplicationMetric getDefaultInstance() {
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1230,7 +1228,7 @@ public final class ProtobufApplicationMetricWrapper {
       return PARSER;
     }
 
-    public ProtobufApplicationMetricWrapper.ProtoApplicationMetric getDefaultInstanceForType() {
+    public de.evoila.cf.autoscaler.kafka.protobuf.PbApplicationMetric.ProtoApplicationMetric getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1256,10 +1254,9 @@ public final class ProtobufApplicationMetricWrapper {
       "\n\003cpu\030\004 \001(\005\022\013\n\003ram\030\005 \001(\003\022\020\n\010requests\030\006 \001" +
       "(\005\022\017\n\007latency\030\007 \001(\005\022\020\n\010quotient\030\010 \001(\005\022\025\n" +
       "\rinstanceCount\030\t \001(\005\022\023\n\013description\030\n \001(" +
-      "\tBq\n\031de.cf.autoscaler.protobufB Protobuf" +
-      "ApplicationMetricWrapper\252\0021de.cf.autosca" +
-      "ler.ProtobufApplicationMetricWrapperb\006pr" +
-      "oto3"
+      "\tBl\n&de.evoila.cf.autoscaler.kafka.proto" +
+      "bufB\023PbApplicationMetric\252\002,de..evoila.cf" +
+      ".autoscaler.PbApplicationMetricb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
