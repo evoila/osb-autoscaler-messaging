@@ -5,7 +5,7 @@
     <groupId>de.evoila.cf.broker</groupId>
     <artifactId>autoscaler-messaging</artifactId>
     <version>1.2.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>autoscaler-messaging</name>
 
     <properties>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.1.RELEASE</version>
+            <version>1.5.10.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
