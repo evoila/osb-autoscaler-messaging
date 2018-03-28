@@ -1,6 +1,6 @@
-package de.cf.autoscaler.kafka.messages;
+package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.cf.autoscaler.kafka.protobuf.ProtobufScalingWrapper.ProtoScaling;
+import de.evoila.cf.autoscaler.kafka.protobuf.ProtobufScalingWrapper;
 
 /**
  * Entity for logging scaling executions.
@@ -102,10 +102,10 @@ public class ScalingLog {
 	private String description;
 	
 	/**
-	 * Constructor for creating a ScalingLog out of a {@linkplain ProtoScaling}.
-	 * @param sc {@linkplain ProtoScaling} to get fields from
+	 * Constructor for creating a ScalingLog out of a {@linkplain ProtobufScalingWrapper.ProtoScaling}.
+	 * @param sc {@linkplain ProtobufScalingWrapper.ProtoScaling} to get fields from
 	 */
-	public ScalingLog(ProtoScaling sc) {
+	public ScalingLog(ProtobufScalingWrapper.ProtoScaling sc) {
 		this(sc.getTimestamp(),
 				sc.getAppId(),
 				sc.getComponent(),

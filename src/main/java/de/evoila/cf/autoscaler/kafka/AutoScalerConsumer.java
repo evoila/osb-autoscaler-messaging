@@ -1,4 +1,4 @@
-package de.cf.autoscaler.kafka;
+package de.evoila.cf.autoscaler.kafka;
 
 /**
  * Interface for Consumer to read messages from the message broker.

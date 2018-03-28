@@ -1,4 +1,4 @@
-package de.cf.autoscaler.kafka.messages;
+package de.evoila.cf.autoscaler.kafka.messages;
 
 import org.springframework.core.annotation.AnnotationConfigurationException;
 

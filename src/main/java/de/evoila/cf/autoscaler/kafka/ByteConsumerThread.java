@@ -1,4 +1,4 @@
-package de.cf.autoscaler.kafka;
+package de.evoila.cf.autoscaler.kafka;
 
 import java.util.Arrays;
 import java.util.Properties;

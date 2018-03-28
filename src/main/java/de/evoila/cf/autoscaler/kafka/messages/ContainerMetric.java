@@ -1,6 +1,6 @@
-package de.cf.autoscaler.kafka.messages;
+package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.cf.autoscaler.kafka.protobuf.ProtobufContainerMetricWrapper.ProtoContainerMetric;
+import de.evoila.cf.autoscaler.kafka.protobuf.ProtobufContainerMetricWrapper;
 
 /**
  * Wrapper class to store information about the state of an instance.
@@ -21,10 +21,10 @@ public class ContainerMetric implements AutoscalerMetric{
 	
 	
 	/**
-	 * Constructor for processing a {@linkplain ProtoContainerMetric}.
+	 * Constructor for processing a {@linkplain ProtobufContainerMetricWrapper.ProtoContainerMetric}.
 	 * @param metric Protobuf container metric to get fields from
 	 */
-	public ContainerMetric(ProtoContainerMetric metric) {
+	public ContainerMetric(ProtobufContainerMetricWrapper.ProtoContainerMetric metric) {
 		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId()
 				, metric.getCpu(), metric.getRam(), metric.getInstanceIndex()
 				, metric.getDescription());

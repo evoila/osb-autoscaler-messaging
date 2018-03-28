@@ -1,4 +1,4 @@
-package de.cf.autoscaler.kafka;
+package de.evoila.cf.autoscaler.kafka;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
