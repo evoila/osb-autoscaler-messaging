@@ -90,6 +90,7 @@ public final class PbLogMessage {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:autoscaler.ProtoLogMessage)
       ProtoLogMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ProtoLogMessage.newBuilder() to construct.
     private ProtoLogMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -107,14 +108,19 @@ public final class PbLogMessage {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ProtoLogMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -124,7 +130,8 @@ public final class PbLogMessage {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -178,6 +185,7 @@ public final class PbLogMessage {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -439,6 +447,7 @@ public final class PbLogMessage {
       if (!getOrganizationBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, organization_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -468,11 +477,11 @@ public final class PbLogMessage {
       if (!getOrganizationBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, organization_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -498,6 +507,7 @@ public final class PbLogMessage {
           .equals(other.getSpace());
       result = result && getOrganization()
           .equals(other.getOrganization());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -528,6 +538,17 @@ public final class PbLogMessage {
       return hash;
     }
 
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -693,7 +714,7 @@ public final class PbLogMessage {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -706,12 +727,12 @@ public final class PbLogMessage {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -752,6 +773,7 @@ public final class PbLogMessage {
           organization_ = other.organization_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1219,12 +1241,12 @@ public final class PbLogMessage {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1247,7 +1269,7 @@ public final class PbLogMessage {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ProtoLogMessage(input, extensionRegistry);
+        return new ProtoLogMessage(input, extensionRegistry);
       }
     };
 
