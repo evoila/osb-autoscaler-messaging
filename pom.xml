@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.evoila.cf.broker</groupId>
-    <artifactId>autoscaler-messaging</artifactId>
+    <artifactId>osb-autoscaler-messaging</artifactId>
     <version>1.2.0</version>
     <packaging>jar</packaging>
     <name>osb-autoscaler-messaging</name>
