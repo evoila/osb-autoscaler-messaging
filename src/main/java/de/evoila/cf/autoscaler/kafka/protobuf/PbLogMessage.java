@@ -44,41 +44,51 @@ public final class PbLogMessage {
         getLogMessageTypeBytes();
 
     /**
-     * <code>string appId = 4;</code>
+     * <code>string sourceType = 4;</code>
+     */
+    java.lang.String getSourceType();
+    /**
+     * <code>string sourceType = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getSourceTypeBytes();
+
+    /**
+     * <code>string appId = 5;</code>
      */
     java.lang.String getAppId();
     /**
-     * <code>string appId = 4;</code>
+     * <code>string appId = 5;</code>
      */
     com.google.protobuf.ByteString
         getAppIdBytes();
 
     /**
-     * <code>string appName = 5;</code>
+     * <code>string appName = 6;</code>
      */
     java.lang.String getAppName();
     /**
-     * <code>string appName = 5;</code>
+     * <code>string appName = 6;</code>
      */
     com.google.protobuf.ByteString
         getAppNameBytes();
 
     /**
-     * <code>string space = 6;</code>
+     * <code>string space = 7;</code>
      */
     java.lang.String getSpace();
     /**
-     * <code>string space = 6;</code>
+     * <code>string space = 7;</code>
      */
     com.google.protobuf.ByteString
         getSpaceBytes();
 
     /**
-     * <code>string organization = 7;</code>
+     * <code>string organization = 8;</code>
      */
     java.lang.String getOrganization();
     /**
-     * <code>string organization = 7;</code>
+     * <code>string organization = 8;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationBytes();
@@ -99,6 +109,7 @@ public final class PbLogMessage {
       timestamp_ = 0L;
       logMessage_ = "";
       logMessageType_ = "";
+      sourceType_ = "";
       appId_ = "";
       appName_ = "";
       space_ = "";
@@ -156,22 +167,28 @@ public final class PbLogMessage {
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              appId_ = s;
+              sourceType_ = s;
               break;
             }
             case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              appName_ = s;
+              appId_ = s;
               break;
             }
             case 50: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              space_ = s;
+              appName_ = s;
               break;
             }
             case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              space_ = s;
+              break;
+            }
+            case 66: {
               java.lang.String s = input.readStringRequireUtf8();
 
               organization_ = s;
@@ -278,10 +295,44 @@ public final class PbLogMessage {
       }
     }
 
-    public static final int APPID_FIELD_NUMBER = 4;
+    public static final int SOURCETYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object sourceType_;
+    /**
+     * <code>string sourceType = 4;</code>
+     */
+    public java.lang.String getSourceType() {
+      java.lang.Object ref = sourceType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sourceType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string sourceType = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSourceTypeBytes() {
+      java.lang.Object ref = sourceType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sourceType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int APPID_FIELD_NUMBER = 5;
     private volatile java.lang.Object appId_;
     /**
-     * <code>string appId = 4;</code>
+     * <code>string appId = 5;</code>
      */
     public java.lang.String getAppId() {
       java.lang.Object ref = appId_;
@@ -296,7 +347,7 @@ public final class PbLogMessage {
       }
     }
     /**
-     * <code>string appId = 4;</code>
+     * <code>string appId = 5;</code>
      */
     public com.google.protobuf.ByteString
         getAppIdBytes() {
@@ -312,10 +363,10 @@ public final class PbLogMessage {
       }
     }
 
-    public static final int APPNAME_FIELD_NUMBER = 5;
+    public static final int APPNAME_FIELD_NUMBER = 6;
     private volatile java.lang.Object appName_;
     /**
-     * <code>string appName = 5;</code>
+     * <code>string appName = 6;</code>
      */
     public java.lang.String getAppName() {
       java.lang.Object ref = appName_;
@@ -330,7 +381,7 @@ public final class PbLogMessage {
       }
     }
     /**
-     * <code>string appName = 5;</code>
+     * <code>string appName = 6;</code>
      */
     public com.google.protobuf.ByteString
         getAppNameBytes() {
@@ -346,10 +397,10 @@ public final class PbLogMessage {
       }
     }
 
-    public static final int SPACE_FIELD_NUMBER = 6;
+    public static final int SPACE_FIELD_NUMBER = 7;
     private volatile java.lang.Object space_;
     /**
-     * <code>string space = 6;</code>
+     * <code>string space = 7;</code>
      */
     public java.lang.String getSpace() {
       java.lang.Object ref = space_;
@@ -364,7 +415,7 @@ public final class PbLogMessage {
       }
     }
     /**
-     * <code>string space = 6;</code>
+     * <code>string space = 7;</code>
      */
     public com.google.protobuf.ByteString
         getSpaceBytes() {
@@ -380,10 +431,10 @@ public final class PbLogMessage {
       }
     }
 
-    public static final int ORGANIZATION_FIELD_NUMBER = 7;
+    public static final int ORGANIZATION_FIELD_NUMBER = 8;
     private volatile java.lang.Object organization_;
     /**
-     * <code>string organization = 7;</code>
+     * <code>string organization = 8;</code>
      */
     public java.lang.String getOrganization() {
       java.lang.Object ref = organization_;
@@ -398,7 +449,7 @@ public final class PbLogMessage {
       }
     }
     /**
-     * <code>string organization = 7;</code>
+     * <code>string organization = 8;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationBytes() {
@@ -435,17 +486,20 @@ public final class PbLogMessage {
       if (!getLogMessageTypeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, logMessageType_);
       }
+      if (!getSourceTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, sourceType_);
+      }
       if (!getAppIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, appId_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, appId_);
       }
       if (!getAppNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, appName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, appName_);
       }
       if (!getSpaceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, space_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, space_);
       }
       if (!getOrganizationBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, organization_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, organization_);
       }
       unknownFields.writeTo(output);
     }
@@ -465,17 +519,20 @@ public final class PbLogMessage {
       if (!getLogMessageTypeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, logMessageType_);
       }
+      if (!getSourceTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, sourceType_);
+      }
       if (!getAppIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, appId_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, appId_);
       }
       if (!getAppNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, appName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, appName_);
       }
       if (!getSpaceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, space_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, space_);
       }
       if (!getOrganizationBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, organization_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, organization_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -499,6 +556,8 @@ public final class PbLogMessage {
           .equals(other.getLogMessage());
       result = result && getLogMessageType()
           .equals(other.getLogMessageType());
+      result = result && getSourceType()
+          .equals(other.getSourceType());
       result = result && getAppId()
           .equals(other.getAppId());
       result = result && getAppName()
@@ -525,6 +584,8 @@ public final class PbLogMessage {
       hash = (53 * hash) + getLogMessage().hashCode();
       hash = (37 * hash) + LOGMESSAGETYPE_FIELD_NUMBER;
       hash = (53 * hash) + getLogMessageType().hashCode();
+      hash = (37 * hash) + SOURCETYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceType().hashCode();
       hash = (37 * hash) + APPID_FIELD_NUMBER;
       hash = (53 * hash) + getAppId().hashCode();
       hash = (37 * hash) + APPNAME_FIELD_NUMBER;
@@ -668,6 +729,8 @@ public final class PbLogMessage {
 
         logMessageType_ = "";
 
+        sourceType_ = "";
+
         appId_ = "";
 
         appName_ = "";
@@ -701,6 +764,7 @@ public final class PbLogMessage {
         result.timestamp_ = timestamp_;
         result.logMessage_ = logMessage_;
         result.logMessageType_ = logMessageType_;
+        result.sourceType_ = sourceType_;
         result.appId_ = appId_;
         result.appName_ = appName_;
         result.space_ = space_;
@@ -755,6 +819,10 @@ public final class PbLogMessage {
         }
         if (!other.getLogMessageType().isEmpty()) {
           logMessageType_ = other.logMessageType_;
+          onChanged();
+        }
+        if (!other.getSourceType().isEmpty()) {
+          sourceType_ = other.sourceType_;
           onChanged();
         }
         if (!other.getAppId().isEmpty()) {
@@ -964,9 +1032,78 @@ public final class PbLogMessage {
         return this;
       }
 
+      private java.lang.Object sourceType_ = "";
+      /**
+       * <code>string sourceType = 4;</code>
+       */
+      public java.lang.String getSourceType() {
+        java.lang.Object ref = sourceType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sourceType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string sourceType = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSourceTypeBytes() {
+        java.lang.Object ref = sourceType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sourceType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string sourceType = 4;</code>
+       */
+      public Builder setSourceType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sourceType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sourceType = 4;</code>
+       */
+      public Builder clearSourceType() {
+        
+        sourceType_ = getDefaultInstance().getSourceType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sourceType = 4;</code>
+       */
+      public Builder setSourceTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sourceType_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object appId_ = "";
       /**
-       * <code>string appId = 4;</code>
+       * <code>string appId = 5;</code>
        */
       public java.lang.String getAppId() {
         java.lang.Object ref = appId_;
@@ -981,7 +1118,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string appId = 4;</code>
+       * <code>string appId = 5;</code>
        */
       public com.google.protobuf.ByteString
           getAppIdBytes() {
@@ -997,7 +1134,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string appId = 4;</code>
+       * <code>string appId = 5;</code>
        */
       public Builder setAppId(
           java.lang.String value) {
@@ -1010,7 +1147,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string appId = 4;</code>
+       * <code>string appId = 5;</code>
        */
       public Builder clearAppId() {
         
@@ -1019,7 +1156,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string appId = 4;</code>
+       * <code>string appId = 5;</code>
        */
       public Builder setAppIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1035,7 +1172,7 @@ public final class PbLogMessage {
 
       private java.lang.Object appName_ = "";
       /**
-       * <code>string appName = 5;</code>
+       * <code>string appName = 6;</code>
        */
       public java.lang.String getAppName() {
         java.lang.Object ref = appName_;
@@ -1050,7 +1187,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string appName = 5;</code>
+       * <code>string appName = 6;</code>
        */
       public com.google.protobuf.ByteString
           getAppNameBytes() {
@@ -1066,7 +1203,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string appName = 5;</code>
+       * <code>string appName = 6;</code>
        */
       public Builder setAppName(
           java.lang.String value) {
@@ -1079,7 +1216,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string appName = 5;</code>
+       * <code>string appName = 6;</code>
        */
       public Builder clearAppName() {
         
@@ -1088,7 +1225,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string appName = 5;</code>
+       * <code>string appName = 6;</code>
        */
       public Builder setAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -1104,7 +1241,7 @@ public final class PbLogMessage {
 
       private java.lang.Object space_ = "";
       /**
-       * <code>string space = 6;</code>
+       * <code>string space = 7;</code>
        */
       public java.lang.String getSpace() {
         java.lang.Object ref = space_;
@@ -1119,7 +1256,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string space = 6;</code>
+       * <code>string space = 7;</code>
        */
       public com.google.protobuf.ByteString
           getSpaceBytes() {
@@ -1135,7 +1272,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string space = 6;</code>
+       * <code>string space = 7;</code>
        */
       public Builder setSpace(
           java.lang.String value) {
@@ -1148,7 +1285,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string space = 6;</code>
+       * <code>string space = 7;</code>
        */
       public Builder clearSpace() {
         
@@ -1157,7 +1294,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string space = 6;</code>
+       * <code>string space = 7;</code>
        */
       public Builder setSpaceBytes(
           com.google.protobuf.ByteString value) {
@@ -1173,7 +1310,7 @@ public final class PbLogMessage {
 
       private java.lang.Object organization_ = "";
       /**
-       * <code>string organization = 7;</code>
+       * <code>string organization = 8;</code>
        */
       public java.lang.String getOrganization() {
         java.lang.Object ref = organization_;
@@ -1188,7 +1325,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string organization = 7;</code>
+       * <code>string organization = 8;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationBytes() {
@@ -1204,7 +1341,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string organization = 7;</code>
+       * <code>string organization = 8;</code>
        */
       public Builder setOrganization(
           java.lang.String value) {
@@ -1217,7 +1354,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string organization = 7;</code>
+       * <code>string organization = 8;</code>
        */
       public Builder clearOrganization() {
         
@@ -1226,7 +1363,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string organization = 7;</code>
+       * <code>string organization = 8;</code>
        */
       public Builder setOrganizationBytes(
           com.google.protobuf.ByteString value) {
@@ -1302,14 +1439,14 @@ public final class PbLogMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020LogMessage.proto\022\nautoscaler\"\225\001\n\017Proto" +
+      "\n\020LogMessage.proto\022\nautoscaler\"\251\001\n\017Proto" +
       "LogMessage\022\021\n\ttimestamp\030\001 \001(\003\022\022\n\nlogMess" +
-      "age\030\002 \001(\t\022\026\n\016logMessageType\030\003 \001(\t\022\r\n\005app" +
-      "Id\030\004 \001(\t\022\017\n\007appName\030\005 \001(\t\022\r\n\005space\030\006 \001(\t" +
-      "\022\024\n\014organization\030\007 \001(\tB]\n&de.evoila.cf.a" +
-      "utoscaler.kafka.protobufB\014PbLogMessage\252\002" +
-      "$de.evoila.cf.autoscaler.PbLogMessageb\006p" +
-      "roto3"
+      "age\030\002 \001(\t\022\026\n\016logMessageType\030\003 \001(\t\022\022\n\nsou" +
+      "rceType\030\004 \001(\t\022\r\n\005appId\030\005 \001(\t\022\017\n\007appName\030" +
+      "\006 \001(\t\022\r\n\005space\030\007 \001(\t\022\024\n\014organization\030\010 \001" +
+      "(\tB]\n&de.evoila.cf.autoscaler.kafka.prot" +
+      "obufB\014PbLogMessage\252\002$de.evoila.cf.autosc" +
+      "aler.PbLogMessageb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1328,7 +1465,7 @@ public final class PbLogMessage {
     internal_static_autoscaler_ProtoLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_autoscaler_ProtoLogMessage_descriptor,
-        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "AppId", "AppName", "Space", "Organization", });
+        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "SourceType", "AppId", "AppName", "Space", "Organization", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

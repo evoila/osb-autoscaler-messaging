@@ -10,6 +10,7 @@ public class LogMessage {
     private long timestamp;
     private String logMessage;
     private String logMessageType;
+    private String sourceType;
     private String appId;
     private String appName;
     private String space;
@@ -17,21 +18,22 @@ public class LogMessage {
 
     public LogMessage(PbLogMessage.ProtoLogMessage protoLogMessage) {
         this(protoLogMessage.getTimestamp(), protoLogMessage.getLogMessage(),
-                protoLogMessage.getLogMessageType(), protoLogMessage.getAppId(),
+                protoLogMessage.getLogMessageType(), protoLogMessage.getSourceType(), protoLogMessage.getAppId(),
                 protoLogMessage.getAppName(), protoLogMessage.getSpace(),
                 protoLogMessage.getOrganization());
     }
 
     public LogMessage(LogMessage other) {
-        this(other.getTimestamp(), other.getLogMessage(), other.getLogMessageType(),
+        this(other.getTimestamp(), other.getLogMessage(), other.getLogMessageType(), other.getSourceType(),
                 other.getAppId(), other.getAppName(), other.getSpace(), other.getOrganization());
     }
 
-    public LogMessage(long timestamp, String logMessage, String logMessageType, String appId,
+    public LogMessage(long timestamp, String logMessage, String logMessageType, String sourceType, String appId,
                       String appName, String space, String organization) {
         this.timestamp = timestamp;
         this.logMessage = logMessage;
         this.logMessageType = logMessageType;
+        this.sourceType = sourceType;
         this.appId = appId;
         this.appName = appName;
         this.space = space;
@@ -61,6 +63,10 @@ public class LogMessage {
     public void setLogMessageType(String logMessageType) {
         this.logMessageType = logMessageType;
     }
+
+    public String getSourceType() { return sourceType; }
+
+    public void setSourceType(String sourceType) { this.sourceType = sourceType; }
 
     public String getAppId() {
         return appId;
