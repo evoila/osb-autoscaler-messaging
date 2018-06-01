@@ -16,6 +16,8 @@ public class ContainerMetric implements AutoscalerMetric {
 	private long timestamp;
 	
 	private String appId;
+	private String appName;
+	private String space;
 	private String metricName;
 	private String description;
 
@@ -24,9 +26,8 @@ public class ContainerMetric implements AutoscalerMetric {
 	 * @param metric Protobuf container metric to get fields from
 	 */
 	public ContainerMetric(PbContainerMetric.ProtoContainerMetric metric) {
-		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId()
-				, metric.getCpu(), metric.getRam(), metric.getInstanceIndex()
-				, metric.getDescription());
+		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId(), metric.getAppName(), metric.getSpace(),
+				metric.getCpu(), metric.getRam(), metric.getInstanceIndex(), metric.getDescription());
 	}
 	
 	/**
@@ -39,11 +40,13 @@ public class ContainerMetric implements AutoscalerMetric {
 	 * @param instanceIndex {@linkplain #instanceIndex}
 	 * @param description {@linkplain #description}
 	 */
-	public ContainerMetric(long timestamp, String metricName, String appId, int cpu, long ram, int instanceIndex,
+	public ContainerMetric(long timestamp, String metricName, String appId, String appName, String space, int cpu, long ram, int instanceIndex,
 			String description) {
 		this.timestamp = timestamp;
 		this.metricName = metricName;
 		this.appId = appId;
+		this.appName = appName;
+		this.space = space;
 		this.cpu = cpu;
 		this.ram = ram;
 		this.instanceIndex = instanceIndex;
@@ -55,8 +58,8 @@ public class ContainerMetric implements AutoscalerMetric {
 	 * @param other metric to copy
 	 */
 	public ContainerMetric(ContainerMetric other) {
-		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getCpu()
-				, other.getRam(), other.getInstanceIndex(), other.getDescription());
+		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(),
+				other.getCpu(), other.getRam(), other.getInstanceIndex(), other.getDescription());
 	}
 
 	/**
@@ -146,7 +149,23 @@ public class ContainerMetric implements AutoscalerMetric {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
+
+	public String getSpace() {
+		return space;
+	}
+
+	public void setSpace(String space) {
+		this.space = space;
+	}
+
 	/**
 	 * Creates and returns a String representation of this metric, mostly used for debugging.
 	 */
@@ -158,6 +177,10 @@ public class ContainerMetric implements AutoscalerMetric {
 				+ "\"metricName\" : \"" + metricName + "\""
 				+ " , "
 				+ "\"appId\" : \"" + appId + "\""
+				+ " , "
+				+ "\"appName\" : \"" + appName + "\""
+				+ " , "
+				+ "\"space\" : \"" + space + "\""
 				+ " , "
 				+ "\"cpu\" : \"" + cpu + "\""
 				+ " , "
@@ -178,7 +201,8 @@ public class ContainerMetric implements AutoscalerMetric {
 	 */
 	public boolean equals(ContainerMetric other) {
 		return (timestamp == other.getTimestamp()) && (metricName.equals(other.getMetricName()))  && (appId.equals(other.getAppId()))
-				&& (cpu == other.getCpu()) && (ram == other.getRam()) && (instanceIndex == other.getInstanceIndex());
+				&& (cpu == other.getCpu()) && (ram == other.getRam()) && (instanceIndex == other.getInstanceIndex()
+				&& (appName == other.getAppName()) && (space == other.getSpace()));
 	}
 	
 	/**
