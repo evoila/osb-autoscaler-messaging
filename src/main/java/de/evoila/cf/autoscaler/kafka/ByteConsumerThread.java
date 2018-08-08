@@ -80,11 +80,14 @@ public class ByteConsumerThread extends Thread{
         configProperties.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         //configProperties.put(ConsumerConfig.CLIENT_ID_CONFIG, "simple");
 
-        kafkaConsumer = new KafkaConsumer<String, byte[]>(configProperties);
+        kafkaConsumer = new KafkaConsumer<>(configProperties);
         kafkaConsumer.subscribe(Arrays.asList(topicName));
 
         try {
             while (true) {
+                /**
+                 * poll(long timeout) deprecated, soon to be kafkaConsumer.poll(Duration.ofMillis(100))
+                 */
                 ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(100);
                 for (ConsumerRecord<String, byte[]> record : records) {
                 	consumer.consume(record.value());
