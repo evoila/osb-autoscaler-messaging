@@ -92,6 +92,16 @@ public final class PbLogMessage {
      */
     com.google.protobuf.ByteString
         getOrganizationBytes();
+
+    /**
+     * <code>string sourceInstance = 9;</code>
+     */
+    java.lang.String getSourceInstance();
+    /**
+     * <code>string sourceInstance = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getSourceInstanceBytes();
   }
   /**
    * Protobuf type {@code autoscaler.ProtoLogMessage}
@@ -114,6 +124,7 @@ public final class PbLogMessage {
       appName_ = "";
       space_ = "";
       organization_ = "";
+      sourceInstance_ = "";
     }
 
     @java.lang.Override
@@ -140,13 +151,6 @@ public final class PbLogMessage {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
 
               timestamp_ = input.readInt64();
@@ -194,6 +198,19 @@ public final class PbLogMessage {
               organization_ = s;
               break;
             }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sourceInstance_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -211,6 +228,7 @@ public final class PbLogMessage {
       return de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.internal_static_autoscaler_ProtoLogMessage_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.internal_static_autoscaler_ProtoLogMessage_fieldAccessorTable
@@ -465,7 +483,42 @@ public final class PbLogMessage {
       }
     }
 
+    public static final int SOURCEINSTANCE_FIELD_NUMBER = 9;
+    private volatile java.lang.Object sourceInstance_;
+    /**
+     * <code>string sourceInstance = 9;</code>
+     */
+    public java.lang.String getSourceInstance() {
+      java.lang.Object ref = sourceInstance_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sourceInstance_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string sourceInstance = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSourceInstanceBytes() {
+      java.lang.Object ref = sourceInstance_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sourceInstance_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -475,6 +528,7 @@ public final class PbLogMessage {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (timestamp_ != 0L) {
@@ -501,9 +555,13 @@ public final class PbLogMessage {
       if (!getOrganizationBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, organization_);
       }
+      if (!getSourceInstanceBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sourceInstance_);
+      }
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -533,6 +591,9 @@ public final class PbLogMessage {
       }
       if (!getOrganizationBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, organization_);
+      }
+      if (!getSourceInstanceBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sourceInstance_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -566,6 +627,8 @@ public final class PbLogMessage {
           .equals(other.getSpace());
       result = result && getOrganization()
           .equals(other.getOrganization());
+      result = result && getSourceInstance()
+          .equals(other.getSourceInstance());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -594,6 +657,8 @@ public final class PbLogMessage {
       hash = (53 * hash) + getSpace().hashCode();
       hash = (37 * hash) + ORGANIZATION_FIELD_NUMBER;
       hash = (53 * hash) + getOrganization().hashCode();
+      hash = (37 * hash) + SOURCEINSTANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceInstance().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -669,6 +734,7 @@ public final class PbLogMessage {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -676,6 +742,7 @@ public final class PbLogMessage {
     public static Builder newBuilder(de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -699,6 +766,7 @@ public final class PbLogMessage {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.internal_static_autoscaler_ProtoLogMessage_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.internal_static_autoscaler_ProtoLogMessage_fieldAccessorTable
@@ -721,6 +789,7 @@ public final class PbLogMessage {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         timestamp_ = 0L;
@@ -739,18 +808,23 @@ public final class PbLogMessage {
 
         organization_ = "";
 
+        sourceInstance_ = "";
+
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.internal_static_autoscaler_ProtoLogMessage_descriptor;
       }
 
+      @java.lang.Override
       public de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage getDefaultInstanceForType() {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage.getDefaultInstance();
       }
 
+      @java.lang.Override
       public de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage build() {
         de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage result = buildPartial();
         if (!result.isInitialized()) {
@@ -759,6 +833,7 @@ public final class PbLogMessage {
         return result;
       }
 
+      @java.lang.Override
       public de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage buildPartial() {
         de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage result = new de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage(this);
         result.timestamp_ = timestamp_;
@@ -769,36 +844,44 @@ public final class PbLogMessage {
         result.appName_ = appName_;
         result.space_ = space_;
         result.organization_ = organization_;
+        result.sourceInstance_ = sourceInstance_;
         onBuilt();
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage) {
           return mergeFrom((de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage)other);
@@ -841,15 +924,21 @@ public final class PbLogMessage {
           organization_ = other.organization_;
           onChanged();
         }
+        if (!other.getSourceInstance().isEmpty()) {
+          sourceInstance_ = other.sourceInstance_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1376,11 +1465,82 @@ public final class PbLogMessage {
         onChanged();
         return this;
       }
+
+      private java.lang.Object sourceInstance_ = "";
+      /**
+       * <code>string sourceInstance = 9;</code>
+       */
+      public java.lang.String getSourceInstance() {
+        java.lang.Object ref = sourceInstance_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sourceInstance_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string sourceInstance = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSourceInstanceBytes() {
+        java.lang.Object ref = sourceInstance_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sourceInstance_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string sourceInstance = 9;</code>
+       */
+      public Builder setSourceInstance(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sourceInstance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sourceInstance = 9;</code>
+       */
+      public Builder clearSourceInstance() {
+        
+        sourceInstance_ = getDefaultInstance().getSourceInstance();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sourceInstance = 9;</code>
+       */
+      public Builder setSourceInstanceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sourceInstance_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -1402,6 +1562,7 @@ public final class PbLogMessage {
 
     private static final com.google.protobuf.Parser<ProtoLogMessage>
         PARSER = new com.google.protobuf.AbstractParser<ProtoLogMessage>() {
+      @java.lang.Override
       public ProtoLogMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1419,6 +1580,7 @@ public final class PbLogMessage {
       return PARSER;
     }
 
+    @java.lang.Override
     public de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage.ProtoLogMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -1439,14 +1601,15 @@ public final class PbLogMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020LogMessage.proto\022\nautoscaler\"\251\001\n\017Proto" +
+      "\n\020LogMessage.proto\022\nautoscaler\"\301\001\n\017Proto" +
       "LogMessage\022\021\n\ttimestamp\030\001 \001(\003\022\022\n\nlogMess" +
       "age\030\002 \001(\t\022\026\n\016logMessageType\030\003 \001(\t\022\022\n\nsou" +
       "rceType\030\004 \001(\t\022\r\n\005appId\030\005 \001(\t\022\017\n\007appName\030" +
       "\006 \001(\t\022\r\n\005space\030\007 \001(\t\022\024\n\014organization\030\010 \001" +
-      "(\tB]\n&de.evoila.cf.autoscaler.kafka.prot" +
-      "obufB\014PbLogMessage\252\002$de.evoila.cf.autosc" +
-      "aler.PbLogMessageb\006proto3"
+      "(\t\022\026\n\016sourceInstance\030\t \001(\tB]\n&de.evoila." +
+      "cf.autoscaler.kafka.protobufB\014PbLogMessa" +
+      "ge\252\002$de.evoila.cf.autoscaler.PbLogMessag" +
+      "eb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1465,7 +1628,7 @@ public final class PbLogMessage {
     internal_static_autoscaler_ProtoLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_autoscaler_ProtoLogMessage_descriptor,
-        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "SourceType", "AppId", "AppName", "Space", "Organization", });
+        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "SourceType", "AppId", "AppName", "Space", "Organization", "SourceInstance", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

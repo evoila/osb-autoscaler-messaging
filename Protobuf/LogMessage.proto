@@ -15,4 +15,5 @@ message ProtoLogMessage {
     string appName = 6;
     string space = 7;
     string organization = 8;
+    string sourceInstance = 9;
 }

@@ -108,13 +108,6 @@ public final class PbHttpMetric {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
 
               timestamp_ = input.readInt64();
@@ -148,6 +141,13 @@ public final class PbHttpMetric {
               description_ = s;
               break;
             }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -165,6 +165,7 @@ public final class PbHttpMetric {
       return de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.internal_static_autoscaler_ProtoHttpMetric_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.internal_static_autoscaler_ProtoHttpMetric_fieldAccessorTable
@@ -302,6 +303,7 @@ public final class PbHttpMetric {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -311,6 +313,7 @@ public final class PbHttpMetric {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (timestamp_ != 0L) {
@@ -334,6 +337,7 @@ public final class PbHttpMetric {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -487,6 +491,7 @@ public final class PbHttpMetric {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -494,6 +499,7 @@ public final class PbHttpMetric {
     public static Builder newBuilder(de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -517,6 +523,7 @@ public final class PbHttpMetric {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.internal_static_autoscaler_ProtoHttpMetric_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.internal_static_autoscaler_ProtoHttpMetric_fieldAccessorTable
@@ -539,6 +546,7 @@ public final class PbHttpMetric {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         timestamp_ = 0L;
@@ -556,15 +564,18 @@ public final class PbHttpMetric {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.internal_static_autoscaler_ProtoHttpMetric_descriptor;
       }
 
+      @java.lang.Override
       public de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric getDefaultInstanceForType() {
         return de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric.getDefaultInstance();
       }
 
+      @java.lang.Override
       public de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric build() {
         de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric result = buildPartial();
         if (!result.isInitialized()) {
@@ -573,6 +584,7 @@ public final class PbHttpMetric {
         return result;
       }
 
+      @java.lang.Override
       public de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric buildPartial() {
         de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric result = new de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric(this);
         result.timestamp_ = timestamp_;
@@ -585,32 +597,39 @@ public final class PbHttpMetric {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric) {
           return mergeFrom((de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric)other);
@@ -648,10 +667,12 @@ public final class PbHttpMetric {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -954,11 +975,13 @@ public final class PbHttpMetric {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -980,6 +1003,7 @@ public final class PbHttpMetric {
 
     private static final com.google.protobuf.Parser<ProtoHttpMetric>
         PARSER = new com.google.protobuf.AbstractParser<ProtoHttpMetric>() {
+      @java.lang.Override
       public ProtoHttpMetric parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -997,6 +1021,7 @@ public final class PbHttpMetric {
       return PARSER;
     }
 
+    @java.lang.Override
     public de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric.ProtoHttpMetric getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
