@@ -18,8 +18,9 @@ message ProtoContainerMetric {
   string appId = 3;
   string appName = 4;
   string space = 5;
-  int32 cpu = 6;
-  int64 ram = 7;
-  int32 instanceIndex = 8;
-  string description = 9;
+  string organization_guid = 6;
+  int32 cpu = 7;
+  int64 ram = 8;
+  int32 instanceIndex = 9;
+  string description = 10;
 }

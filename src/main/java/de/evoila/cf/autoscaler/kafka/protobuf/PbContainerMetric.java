@@ -64,26 +64,36 @@ public final class PbContainerMetric {
         getSpaceBytes();
 
     /**
-     * <code>int32 cpu = 6;</code>
+     * <code>string organization_guid = 6;</code>
+     */
+    java.lang.String getOrganizationGuid();
+    /**
+     * <code>string organization_guid = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrganizationGuidBytes();
+
+    /**
+     * <code>int32 cpu = 7;</code>
      */
     int getCpu();
 
     /**
-     * <code>int64 ram = 7;</code>
+     * <code>int64 ram = 8;</code>
      */
     long getRam();
 
     /**
-     * <code>int32 instanceIndex = 8;</code>
+     * <code>int32 instanceIndex = 9;</code>
      */
     int getInstanceIndex();
 
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 10;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 10;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -106,6 +116,7 @@ public final class PbContainerMetric {
       appId_ = "";
       appName_ = "";
       space_ = "";
+      organizationGuid_ = "";
       cpu_ = 0;
       ram_ = 0L;
       instanceIndex_ = 0;
@@ -165,22 +176,28 @@ public final class PbContainerMetric {
               space_ = s;
               break;
             }
-            case 48: {
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              cpu_ = input.readInt32();
+              organizationGuid_ = s;
               break;
             }
             case 56: {
 
-              ram_ = input.readInt64();
+              cpu_ = input.readInt32();
               break;
             }
             case 64: {
 
+              ram_ = input.readInt64();
+              break;
+            }
+            case 72: {
+
               instanceIndex_ = input.readInt32();
               break;
             }
-            case 74: {
+            case 82: {
               java.lang.String s = input.readStringRequireUtf8();
 
               description_ = s;
@@ -363,37 +380,71 @@ public final class PbContainerMetric {
       }
     }
 
-    public static final int CPU_FIELD_NUMBER = 6;
+    public static final int ORGANIZATION_GUID_FIELD_NUMBER = 6;
+    private volatile java.lang.Object organizationGuid_;
+    /**
+     * <code>string organization_guid = 6;</code>
+     */
+    public java.lang.String getOrganizationGuid() {
+      java.lang.Object ref = organizationGuid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        organizationGuid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string organization_guid = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrganizationGuidBytes() {
+      java.lang.Object ref = organizationGuid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        organizationGuid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CPU_FIELD_NUMBER = 7;
     private int cpu_;
     /**
-     * <code>int32 cpu = 6;</code>
+     * <code>int32 cpu = 7;</code>
      */
     public int getCpu() {
       return cpu_;
     }
 
-    public static final int RAM_FIELD_NUMBER = 7;
+    public static final int RAM_FIELD_NUMBER = 8;
     private long ram_;
     /**
-     * <code>int64 ram = 7;</code>
+     * <code>int64 ram = 8;</code>
      */
     public long getRam() {
       return ram_;
     }
 
-    public static final int INSTANCEINDEX_FIELD_NUMBER = 8;
+    public static final int INSTANCEINDEX_FIELD_NUMBER = 9;
     private int instanceIndex_;
     /**
-     * <code>int32 instanceIndex = 8;</code>
+     * <code>int32 instanceIndex = 9;</code>
      */
     public int getInstanceIndex() {
       return instanceIndex_;
     }
 
-    public static final int DESCRIPTION_FIELD_NUMBER = 9;
+    public static final int DESCRIPTION_FIELD_NUMBER = 10;
     private volatile java.lang.Object description_;
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 10;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -408,7 +459,7 @@ public final class PbContainerMetric {
       }
     }
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 10;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -453,17 +504,20 @@ public final class PbContainerMetric {
       if (!getSpaceBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, space_);
       }
+      if (!getOrganizationGuidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, organizationGuid_);
+      }
       if (cpu_ != 0) {
-        output.writeInt32(6, cpu_);
+        output.writeInt32(7, cpu_);
       }
       if (ram_ != 0L) {
-        output.writeInt64(7, ram_);
+        output.writeInt64(8, ram_);
       }
       if (instanceIndex_ != 0) {
-        output.writeInt32(8, instanceIndex_);
+        output.writeInt32(9, instanceIndex_);
       }
       if (!getDescriptionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, description_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, description_);
       }
       unknownFields.writeTo(output);
     }
@@ -490,20 +544,23 @@ public final class PbContainerMetric {
       if (!getSpaceBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, space_);
       }
+      if (!getOrganizationGuidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, organizationGuid_);
+      }
       if (cpu_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, cpu_);
+          .computeInt32Size(7, cpu_);
       }
       if (ram_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, ram_);
+          .computeInt64Size(8, ram_);
       }
       if (instanceIndex_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, instanceIndex_);
+          .computeInt32Size(9, instanceIndex_);
       }
       if (!getDescriptionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, description_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, description_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -531,6 +588,8 @@ public final class PbContainerMetric {
           .equals(other.getAppName());
       result = result && getSpace()
           .equals(other.getSpace());
+      result = result && getOrganizationGuid()
+          .equals(other.getOrganizationGuid());
       result = result && (getCpu()
           == other.getCpu());
       result = result && (getRam()
@@ -561,6 +620,8 @@ public final class PbContainerMetric {
       hash = (53 * hash) + getAppName().hashCode();
       hash = (37 * hash) + SPACE_FIELD_NUMBER;
       hash = (53 * hash) + getSpace().hashCode();
+      hash = (37 * hash) + ORGANIZATION_GUID_FIELD_NUMBER;
+      hash = (53 * hash) + getOrganizationGuid().hashCode();
       hash = (37 * hash) + CPU_FIELD_NUMBER;
       hash = (53 * hash) + getCpu();
       hash = (37 * hash) + RAM_FIELD_NUMBER;
@@ -713,6 +774,8 @@ public final class PbContainerMetric {
 
         space_ = "";
 
+        organizationGuid_ = "";
+
         cpu_ = 0;
 
         ram_ = 0L;
@@ -752,6 +815,7 @@ public final class PbContainerMetric {
         result.appId_ = appId_;
         result.appName_ = appName_;
         result.space_ = space_;
+        result.organizationGuid_ = organizationGuid_;
         result.cpu_ = cpu_;
         result.ram_ = ram_;
         result.instanceIndex_ = instanceIndex_;
@@ -821,6 +885,10 @@ public final class PbContainerMetric {
         }
         if (!other.getSpace().isEmpty()) {
           space_ = other.space_;
+          onChanged();
+        }
+        if (!other.getOrganizationGuid().isEmpty()) {
+          organizationGuid_ = other.organizationGuid_;
           onChanged();
         }
         if (other.getCpu() != 0) {
@@ -1167,15 +1235,84 @@ public final class PbContainerMetric {
         return this;
       }
 
+      private java.lang.Object organizationGuid_ = "";
+      /**
+       * <code>string organization_guid = 6;</code>
+       */
+      public java.lang.String getOrganizationGuid() {
+        java.lang.Object ref = organizationGuid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          organizationGuid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string organization_guid = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrganizationGuidBytes() {
+        java.lang.Object ref = organizationGuid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          organizationGuid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string organization_guid = 6;</code>
+       */
+      public Builder setOrganizationGuid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        organizationGuid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organization_guid = 6;</code>
+       */
+      public Builder clearOrganizationGuid() {
+        
+        organizationGuid_ = getDefaultInstance().getOrganizationGuid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organization_guid = 6;</code>
+       */
+      public Builder setOrganizationGuidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        organizationGuid_ = value;
+        onChanged();
+        return this;
+      }
+
       private int cpu_ ;
       /**
-       * <code>int32 cpu = 6;</code>
+       * <code>int32 cpu = 7;</code>
        */
       public int getCpu() {
         return cpu_;
       }
       /**
-       * <code>int32 cpu = 6;</code>
+       * <code>int32 cpu = 7;</code>
        */
       public Builder setCpu(int value) {
         
@@ -1184,7 +1321,7 @@ public final class PbContainerMetric {
         return this;
       }
       /**
-       * <code>int32 cpu = 6;</code>
+       * <code>int32 cpu = 7;</code>
        */
       public Builder clearCpu() {
         
@@ -1195,13 +1332,13 @@ public final class PbContainerMetric {
 
       private long ram_ ;
       /**
-       * <code>int64 ram = 7;</code>
+       * <code>int64 ram = 8;</code>
        */
       public long getRam() {
         return ram_;
       }
       /**
-       * <code>int64 ram = 7;</code>
+       * <code>int64 ram = 8;</code>
        */
       public Builder setRam(long value) {
         
@@ -1210,7 +1347,7 @@ public final class PbContainerMetric {
         return this;
       }
       /**
-       * <code>int64 ram = 7;</code>
+       * <code>int64 ram = 8;</code>
        */
       public Builder clearRam() {
         
@@ -1221,13 +1358,13 @@ public final class PbContainerMetric {
 
       private int instanceIndex_ ;
       /**
-       * <code>int32 instanceIndex = 8;</code>
+       * <code>int32 instanceIndex = 9;</code>
        */
       public int getInstanceIndex() {
         return instanceIndex_;
       }
       /**
-       * <code>int32 instanceIndex = 8;</code>
+       * <code>int32 instanceIndex = 9;</code>
        */
       public Builder setInstanceIndex(int value) {
         
@@ -1236,7 +1373,7 @@ public final class PbContainerMetric {
         return this;
       }
       /**
-       * <code>int32 instanceIndex = 8;</code>
+       * <code>int32 instanceIndex = 9;</code>
        */
       public Builder clearInstanceIndex() {
         
@@ -1247,7 +1384,7 @@ public final class PbContainerMetric {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>string description = 9;</code>
+       * <code>string description = 10;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -1262,7 +1399,7 @@ public final class PbContainerMetric {
         }
       }
       /**
-       * <code>string description = 9;</code>
+       * <code>string description = 10;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -1278,7 +1415,7 @@ public final class PbContainerMetric {
         }
       }
       /**
-       * <code>string description = 9;</code>
+       * <code>string description = 10;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -1291,7 +1428,7 @@ public final class PbContainerMetric {
         return this;
       }
       /**
-       * <code>string description = 9;</code>
+       * <code>string description = 10;</code>
        */
       public Builder clearDescription() {
         
@@ -1300,7 +1437,7 @@ public final class PbContainerMetric {
         return this;
       }
       /**
-       * <code>string description = 9;</code>
+       * <code>string description = 10;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -1380,15 +1517,15 @@ public final class PbContainerMetric {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025ContainerMetric.proto\022\nautoscaler\"\262\001\n\024" +
+      "\n\025ContainerMetric.proto\022\nautoscaler\"\315\001\n\024" +
       "ProtoContainerMetric\022\021\n\ttimestamp\030\001 \001(\003\022" +
       "\022\n\nmetricName\030\002 \001(\t\022\r\n\005appId\030\003 \001(\t\022\017\n\007ap" +
-      "pName\030\004 \001(\t\022\r\n\005space\030\005 \001(\t\022\013\n\003cpu\030\006 \001(\005\022" +
-      "\013\n\003ram\030\007 \001(\003\022\025\n\rinstanceIndex\030\010 \001(\005\022\023\n\013d" +
-      "escription\030\t \001(\tBg\n&de.evoila.cf.autosca" +
-      "ler.kafka.protobufB\021PbContainerMetric\252\002)" +
-      "de.evoila.cf.autoscaler.PbContainerMetri" +
-      "cb\006proto3"
+      "pName\030\004 \001(\t\022\r\n\005space\030\005 \001(\t\022\031\n\021organizati" +
+      "on_guid\030\006 \001(\t\022\013\n\003cpu\030\007 \001(\005\022\013\n\003ram\030\010 \001(\003\022" +
+      "\025\n\rinstanceIndex\030\t \001(\005\022\023\n\013description\030\n " +
+      "\001(\tBg\n&de.evoila.cf.autoscaler.kafka.pro" +
+      "tobufB\021PbContainerMetric\252\002)de.evoila.cf." +
+      "autoscaler.PbContainerMetricb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1407,7 +1544,7 @@ public final class PbContainerMetric {
     internal_static_autoscaler_ProtoContainerMetric_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_autoscaler_ProtoContainerMetric_descriptor,
-        new java.lang.String[] { "Timestamp", "MetricName", "AppId", "AppName", "Space", "Cpu", "Ram", "InstanceIndex", "Description", });
+        new java.lang.String[] { "Timestamp", "MetricName", "AppId", "AppName", "Space", "OrganizationGuid", "Cpu", "Ram", "InstanceIndex", "Description", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

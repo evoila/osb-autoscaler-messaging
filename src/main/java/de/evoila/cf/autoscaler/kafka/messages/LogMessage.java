@@ -15,22 +15,25 @@ public class LogMessage {
     private String appName;
     private String space;
     private String organization;
+    private String organization_guid;
     private String sourceInstance;
 
     public LogMessage(PbLogMessage.ProtoLogMessage protoLogMessage) {
         this(protoLogMessage.getTimestamp(), protoLogMessage.getLogMessage(),
                 protoLogMessage.getLogMessageType(), protoLogMessage.getSourceType(), protoLogMessage.getAppId(),
                 protoLogMessage.getAppName(), protoLogMessage.getSpace(),
-                protoLogMessage.getOrganization(), protoLogMessage.getSourceInstance());
+                protoLogMessage.getOrganization(), protoLogMessage.getOrganizationGuid(),
+                protoLogMessage.getSourceInstance());
     }
 
     public LogMessage(LogMessage other) {
         this(other.getTimestamp(), other.getLogMessage(), other.getLogMessageType(), other.getSourceType(),
-                other.getAppId(), other.getAppName(), other.getSpace(), other.getOrganization(), other.getSourceInstance());
+                other.getAppId(), other.getAppName(), other.getSpace(), other.getOrganization(), other.getOrganization_guid(),
+                other.getSourceInstance());
     }
 
     public LogMessage(long timestamp, String logMessage, String logMessageType, String sourceType, String appId,
-                      String appName, String space, String organization, String sourceInstance) {
+                      String appName, String space, String organization, String organization_guid, String sourceInstance) {
         this.timestamp = timestamp;
         this.logMessage = logMessage;
         this.logMessageType = logMessageType;
@@ -39,6 +42,7 @@ public class LogMessage {
         this.appName = appName;
         this.space = space;
         this.organization = organization;
+        this.organization_guid = organization_guid;
         this.sourceInstance = sourceInstance;
     }
 
@@ -89,6 +93,14 @@ public class LogMessage {
     public String getOrganization() { return organization; }
 
     public void setOrganization(String organization) { this.organization = organization; }
+
+    public String getOrganization_guid() {
+        return organization_guid;
+    }
+
+    public void setOrganization_guid(String organization_guid) {
+        this.organization_guid = organization_guid;
+    }
 
     public String getSourceInstance() {
         return sourceInstance;

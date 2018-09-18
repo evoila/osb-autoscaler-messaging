@@ -94,11 +94,21 @@ public final class PbLogMessage {
         getOrganizationBytes();
 
     /**
-     * <code>string sourceInstance = 9;</code>
+     * <code>string organization_guid = 9;</code>
+     */
+    java.lang.String getOrganizationGuid();
+    /**
+     * <code>string organization_guid = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrganizationGuidBytes();
+
+    /**
+     * <code>string sourceInstance = 10;</code>
      */
     java.lang.String getSourceInstance();
     /**
-     * <code>string sourceInstance = 9;</code>
+     * <code>string sourceInstance = 10;</code>
      */
     com.google.protobuf.ByteString
         getSourceInstanceBytes();
@@ -124,6 +134,7 @@ public final class PbLogMessage {
       appName_ = "";
       space_ = "";
       organization_ = "";
+      organizationGuid_ = "";
       sourceInstance_ = "";
     }
 
@@ -199,6 +210,12 @@ public final class PbLogMessage {
               break;
             }
             case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              organizationGuid_ = s;
+              break;
+            }
+            case 82: {
               java.lang.String s = input.readStringRequireUtf8();
 
               sourceInstance_ = s;
@@ -483,10 +500,44 @@ public final class PbLogMessage {
       }
     }
 
-    public static final int SOURCEINSTANCE_FIELD_NUMBER = 9;
+    public static final int ORGANIZATION_GUID_FIELD_NUMBER = 9;
+    private volatile java.lang.Object organizationGuid_;
+    /**
+     * <code>string organization_guid = 9;</code>
+     */
+    public java.lang.String getOrganizationGuid() {
+      java.lang.Object ref = organizationGuid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        organizationGuid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string organization_guid = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrganizationGuidBytes() {
+      java.lang.Object ref = organizationGuid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        organizationGuid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SOURCEINSTANCE_FIELD_NUMBER = 10;
     private volatile java.lang.Object sourceInstance_;
     /**
-     * <code>string sourceInstance = 9;</code>
+     * <code>string sourceInstance = 10;</code>
      */
     public java.lang.String getSourceInstance() {
       java.lang.Object ref = sourceInstance_;
@@ -501,7 +552,7 @@ public final class PbLogMessage {
       }
     }
     /**
-     * <code>string sourceInstance = 9;</code>
+     * <code>string sourceInstance = 10;</code>
      */
     public com.google.protobuf.ByteString
         getSourceInstanceBytes() {
@@ -555,8 +606,11 @@ public final class PbLogMessage {
       if (!getOrganizationBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, organization_);
       }
+      if (!getOrganizationGuidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, organizationGuid_);
+      }
       if (!getSourceInstanceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sourceInstance_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, sourceInstance_);
       }
       unknownFields.writeTo(output);
     }
@@ -592,8 +646,11 @@ public final class PbLogMessage {
       if (!getOrganizationBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, organization_);
       }
+      if (!getOrganizationGuidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, organizationGuid_);
+      }
       if (!getSourceInstanceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sourceInstance_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, sourceInstance_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -627,6 +684,8 @@ public final class PbLogMessage {
           .equals(other.getSpace());
       result = result && getOrganization()
           .equals(other.getOrganization());
+      result = result && getOrganizationGuid()
+          .equals(other.getOrganizationGuid());
       result = result && getSourceInstance()
           .equals(other.getSourceInstance());
       result = result && unknownFields.equals(other.unknownFields);
@@ -657,6 +716,8 @@ public final class PbLogMessage {
       hash = (53 * hash) + getSpace().hashCode();
       hash = (37 * hash) + ORGANIZATION_FIELD_NUMBER;
       hash = (53 * hash) + getOrganization().hashCode();
+      hash = (37 * hash) + ORGANIZATION_GUID_FIELD_NUMBER;
+      hash = (53 * hash) + getOrganizationGuid().hashCode();
       hash = (37 * hash) + SOURCEINSTANCE_FIELD_NUMBER;
       hash = (53 * hash) + getSourceInstance().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -808,6 +869,8 @@ public final class PbLogMessage {
 
         organization_ = "";
 
+        organizationGuid_ = "";
+
         sourceInstance_ = "";
 
         return this;
@@ -844,6 +907,7 @@ public final class PbLogMessage {
         result.appName_ = appName_;
         result.space_ = space_;
         result.organization_ = organization_;
+        result.organizationGuid_ = organizationGuid_;
         result.sourceInstance_ = sourceInstance_;
         onBuilt();
         return result;
@@ -922,6 +986,10 @@ public final class PbLogMessage {
         }
         if (!other.getOrganization().isEmpty()) {
           organization_ = other.organization_;
+          onChanged();
+        }
+        if (!other.getOrganizationGuid().isEmpty()) {
+          organizationGuid_ = other.organizationGuid_;
           onChanged();
         }
         if (!other.getSourceInstance().isEmpty()) {
@@ -1466,9 +1534,78 @@ public final class PbLogMessage {
         return this;
       }
 
+      private java.lang.Object organizationGuid_ = "";
+      /**
+       * <code>string organization_guid = 9;</code>
+       */
+      public java.lang.String getOrganizationGuid() {
+        java.lang.Object ref = organizationGuid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          organizationGuid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string organization_guid = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrganizationGuidBytes() {
+        java.lang.Object ref = organizationGuid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          organizationGuid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string organization_guid = 9;</code>
+       */
+      public Builder setOrganizationGuid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        organizationGuid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organization_guid = 9;</code>
+       */
+      public Builder clearOrganizationGuid() {
+        
+        organizationGuid_ = getDefaultInstance().getOrganizationGuid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organization_guid = 9;</code>
+       */
+      public Builder setOrganizationGuidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        organizationGuid_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object sourceInstance_ = "";
       /**
-       * <code>string sourceInstance = 9;</code>
+       * <code>string sourceInstance = 10;</code>
        */
       public java.lang.String getSourceInstance() {
         java.lang.Object ref = sourceInstance_;
@@ -1483,7 +1620,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string sourceInstance = 9;</code>
+       * <code>string sourceInstance = 10;</code>
        */
       public com.google.protobuf.ByteString
           getSourceInstanceBytes() {
@@ -1499,7 +1636,7 @@ public final class PbLogMessage {
         }
       }
       /**
-       * <code>string sourceInstance = 9;</code>
+       * <code>string sourceInstance = 10;</code>
        */
       public Builder setSourceInstance(
           java.lang.String value) {
@@ -1512,7 +1649,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string sourceInstance = 9;</code>
+       * <code>string sourceInstance = 10;</code>
        */
       public Builder clearSourceInstance() {
         
@@ -1521,7 +1658,7 @@ public final class PbLogMessage {
         return this;
       }
       /**
-       * <code>string sourceInstance = 9;</code>
+       * <code>string sourceInstance = 10;</code>
        */
       public Builder setSourceInstanceBytes(
           com.google.protobuf.ByteString value) {
@@ -1601,15 +1738,15 @@ public final class PbLogMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020LogMessage.proto\022\nautoscaler\"\301\001\n\017Proto" +
+      "\n\020LogMessage.proto\022\nautoscaler\"\334\001\n\017Proto" +
       "LogMessage\022\021\n\ttimestamp\030\001 \001(\003\022\022\n\nlogMess" +
       "age\030\002 \001(\t\022\026\n\016logMessageType\030\003 \001(\t\022\022\n\nsou" +
       "rceType\030\004 \001(\t\022\r\n\005appId\030\005 \001(\t\022\017\n\007appName\030" +
       "\006 \001(\t\022\r\n\005space\030\007 \001(\t\022\024\n\014organization\030\010 \001" +
-      "(\t\022\026\n\016sourceInstance\030\t \001(\tB]\n&de.evoila." +
-      "cf.autoscaler.kafka.protobufB\014PbLogMessa" +
-      "ge\252\002$de.evoila.cf.autoscaler.PbLogMessag" +
-      "eb\006proto3"
+      "(\t\022\031\n\021organization_guid\030\t \001(\t\022\026\n\016sourceI" +
+      "nstance\030\n \001(\tB]\n&de.evoila.cf.autoscaler" +
+      ".kafka.protobufB\014PbLogMessage\252\002$de.evoil" +
+      "a.cf.autoscaler.PbLogMessageb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1628,7 +1765,7 @@ public final class PbLogMessage {
     internal_static_autoscaler_ProtoLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_autoscaler_ProtoLogMessage_descriptor,
-        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "SourceType", "AppId", "AppName", "Space", "Organization", "SourceInstance", });
+        new java.lang.String[] { "Timestamp", "LogMessage", "LogMessageType", "SourceType", "AppId", "AppName", "Space", "Organization", "OrganizationGuid", "SourceInstance", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
