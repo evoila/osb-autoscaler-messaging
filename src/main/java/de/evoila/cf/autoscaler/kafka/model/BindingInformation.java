@@ -5,6 +5,11 @@ package de.evoila.cf.autoscaler.kafka.model;
  */
 public class BindingInformation {
 
+    public static final String ACTION_BIND = "bind";
+    public static final String ACTION_UNBIND = "unbind";
+    public static final String SOURCE_AUTOSCALER = "autoscaler";
+    public static final String SOURCE_LOGMETRIC = "logMetric";
+
     private String appId;
     private String action;
     private String source;
