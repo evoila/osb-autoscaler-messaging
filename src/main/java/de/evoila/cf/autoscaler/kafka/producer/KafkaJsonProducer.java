@@ -2,7 +2,7 @@ package de.evoila.cf.autoscaler.kafka.producer;
 
 import com.google.gson.Gson;
 import de.evoila.cf.autoscaler.kafka.KafkaPropertiesBean;
-import de.evoila.cf.autoscaler.kafka.model.Binding;
+import de.evoila.cf.autoscaler.kafka.model.BindingInformation;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -15,7 +15,7 @@ import java.util.Properties;
  * Created by reneschollmeyer, evoila on 16.10.18.
  */
 @Service
-public class JsonProducer {
+public class KafkaJsonProducer {
 
     private KafkaPropertiesBean kafkaProperties;
 
@@ -23,7 +23,7 @@ public class JsonProducer {
 
     Producer<String, String> producer;
 
-    public JsonProducer(KafkaPropertiesBean kafkaProperties) {
+    public KafkaJsonProducer(KafkaPropertiesBean kafkaProperties) {
         this.kafkaProperties = kafkaProperties;
         this.gson = new Gson();
 
@@ -38,8 +38,8 @@ public class JsonProducer {
         producer = new KafkaProducer<>(properties);
     }
 
-    public void produceKafkaMessage(String topic, Binding binding) {
-        ProducerRecord<String, String> record = new ProducerRecord<>(topic, gson.toJson(binding));
+    public void produceKafkaMessage(String topic, BindingInformation bindingInformation) {
+        ProducerRecord<String, String> record = new ProducerRecord<>(topic, gson.toJson(bindingInformation));
 
         producer.send(record);
         producer.flush();
