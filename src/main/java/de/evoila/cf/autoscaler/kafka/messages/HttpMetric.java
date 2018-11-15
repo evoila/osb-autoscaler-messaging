@@ -3,7 +3,7 @@ package de.evoila.cf.autoscaler.kafka.messages;
 import de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric;
 
 /**
- * Wrapper class to store information about the http requests of an application.
+ * Wrapper class to store information about the controller requests of an application.
  * @author Marius Berger
  *
  */
@@ -21,7 +21,7 @@ public class HttpMetric implements AutoscalerMetric{
 	
 	/**
 	 * Constructor for processing a {@linkplain PbHttpMetric.ProtoHttpMetric}.
-	 * @param metric Protobuf http metric to get fields from
+	 * @param metric Protobuf controller metric to get fields from
 	 */
 	public HttpMetric(PbHttpMetric.ProtoHttpMetric metric) {
 		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId(), metric.getRequests(), metric.getLatency(), metric.getDescription());
@@ -55,7 +55,7 @@ public class HttpMetric implements AutoscalerMetric{
 	}
 	
 	/**
-	 * Returns a String representation of the http metric type.
+	 * Returns a String representation of the controller metric type.
 	 */
 	@Override
 	public String getType() {
