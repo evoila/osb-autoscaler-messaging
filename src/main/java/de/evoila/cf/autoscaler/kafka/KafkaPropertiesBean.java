@@ -1,7 +1,6 @@
 package de.evoila.cf.autoscaler.kafka;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Service;
 
 /**
  * A bean for storing properties dedicated to Kafka.
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
  * @author Marius Berger
  *
  */
-@Service
 @ConfigurationProperties(prefix = "kafka")
 public class KafkaPropertiesBean {
 
