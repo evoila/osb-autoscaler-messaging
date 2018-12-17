@@ -7,6 +7,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 
 import java.util.Properties;
@@ -15,6 +16,7 @@ import java.util.Properties;
  * Created by reneschollmeyer, evoila on 16.10.18.
  */
 @Service
+@ConditionalOnBean(KafkaPropertiesBean.class)
 public class KafkaJsonProducer {
 
     private KafkaPropertiesBean kafkaProperties;
