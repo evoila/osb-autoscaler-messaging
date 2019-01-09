@@ -1,7 +1,5 @@
 package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.evoila.cf.autoscaler.kafka.protobuf.PbScalingLog;
-
 /**
  * Entity for logging scaling executions.
  * @author Marius Berger, Johannes Hiemer
@@ -104,33 +102,11 @@ public class ScalingLog {
 	 * description of scaling event
 	 */
 	private String description;
-	
+
 	/**
-	 * Constructor for creating a ScalingLog out of a {@linkplain PbScalingLog}.
-	 * @param sc {@linkplain PbScalingLog} to get fields from
+	 * Default constructor in order to make the jackson ObjectMapper work
 	 */
-	public ScalingLog(PbScalingLog.ProtoScalingLog sc) {
-		this(sc.getTimestamp(),
-				sc.getAppId(),
-				sc.getResourceName(),
-				sc.getComponent(),
-				sc.getOldInstances(),
-				sc.getNewInstances(),
-				sc.getCurrentMaxInstanceLimit(),
-				sc.getCurrentMinInstanceLimit(),
-				sc.getCurrentCpuLoad(),
-				sc.getCurrentCpuUpperLimit(),
-				sc.getCurrentCpuLowerLimit(),
-				sc.getCurrentRamLoad(),
-				sc.getCurrentRamUpperLimit(),
-				sc.getCurrentRamLowerLimit(),
-				sc.getCurrentRequestCount(),
-				sc.getCurrentLatencyValue(),
-				sc.getCurrentLatencyUpperLimit(),
-				sc.getCurrentLatencyLowerLimit(),
-				sc.getCurrentQuotientValue(),
-				sc.getDescription());
-	}
+	public ScalingLog() {}
 
 	/**
 	 * Constructor for creating a ScalingLog with fields.

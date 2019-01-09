@@ -1,7 +1,5 @@
 package de.evoila.cf.autoscaler.kafka.messages;
 
-import org.springframework.core.annotation.AnnotationConfigurationException;
-
 /**
  * Interface for metrics the Autoscaler 
  * @author Marius Berger
@@ -43,22 +41,6 @@ public interface AutoscalerMetric {
 	 * Returns the id of the application the metric is dedicated to.
 	 */
 	public String getAppId();
-	
-	/**
-	 * Returns the {@linkplain ContainerMetric} or throws {@link AnnotationConfigurationException} if it is not a container metric.
-	 * @throws InvalidMetricTypeException if the object is not a {@linkplain ContainerMetric}
-	 */
-	public ContainerMetric getContainerMetric() throws InvalidMetricTypeException;
-	
-	/**
-	 * Returns the {@linkplain HttpMetric} or throws {@link AnnotationConfigurationException} if it is not a HTTP metric.
-	 * @throws InvalidMetricTypeException if the object is not a {@linkplain HttpMetric}
-	 */
-	public HttpMetric getHttpMetric() throws InvalidMetricTypeException;
-	
-	/**
-	 * Returns the {@linkplain ApplicationMetric} or throws {@link AnnotationConfigurationException} if it is not a application metric.
-	 * @throws InvalidMetricTypeException if the object is not a {@linkplain ApplicationMetric}
-	 */
-	public ApplicationMetric getApplicationMetric() throws InvalidMetricTypeException;
+
+	public long getTimestamp();
 }

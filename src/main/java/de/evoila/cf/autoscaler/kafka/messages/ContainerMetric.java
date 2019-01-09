@@ -1,7 +1,5 @@
 package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.evoila.cf.autoscaler.kafka.protobuf.PbContainerMetric;
-
 /**
  * Wrapper class to store information about the state of an instance.
  * @author Marius Berger
@@ -18,19 +16,15 @@ public class ContainerMetric implements AutoscalerMetric {
 	private String appId;
 	private String appName;
 	private String space;
-	private String organization_guid;
+	private String organizationGuid;
 	private String metricName;
 	private String description;
 
 	/**
-	 * Constructor for processing a {@linkplain PbContainerMetric.ProtoContainerMetric}.
-	 * @param metric Protobuf container metric to get fields from
+	 * Default constructor in order to make the jackson ObjectMapper work
 	 */
-	public ContainerMetric(PbContainerMetric.ProtoContainerMetric metric) {
-		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId(), metric.getAppName(), metric.getSpace(),
-				metric.getOrganizationGuid(), metric.getCpu(), metric.getRam(), metric.getInstanceIndex(), metric.getDescription());
-	}
-	
+	public ContainerMetric() {}
+
 	/**
 	 * Constructor with all fields.
 	 * @param timestamp {@linkplain #timestamp}
@@ -41,14 +35,14 @@ public class ContainerMetric implements AutoscalerMetric {
 	 * @param instanceIndex {@linkplain #instanceIndex}
 	 * @param description {@linkplain #description}
 	 */
-	public ContainerMetric(long timestamp, String metricName, String appId, String appName, String space, String organization_guid, int cpu, long ram, int instanceIndex,
-			String description) {
+	public ContainerMetric(long timestamp, String metricName, String appId, String appName, String space, String organizationGuid, int cpu, long ram, int instanceIndex,
+						   String description) {
 		this.timestamp = timestamp;
 		this.metricName = metricName;
 		this.appId = appId;
 		this.appName = appName;
 		this.space = space;
-		this.organization_guid = organization_guid;
+		this.organizationGuid = organizationGuid;
 		this.cpu = cpu;
 		this.ram = ram;
 		this.instanceIndex = instanceIndex;
@@ -61,7 +55,7 @@ public class ContainerMetric implements AutoscalerMetric {
 	 */
 	public ContainerMetric(ContainerMetric other) {
 		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(),
-				other.getOrganization_guid(), other.getCpu(), other.getRam(), other.getInstanceIndex(), other.getDescription());
+				other.getOrganizationGuid(), other.getCpu(), other.getRam(), other.getInstanceIndex(), other.getDescription());
 	}
 
 	/**
@@ -70,30 +64,6 @@ public class ContainerMetric implements AutoscalerMetric {
 	@Override
 	public String getType() {
 		return AutoscalerMetric.TYPE_CONTAINER;
-	}
-
-	/**
-	 * Returns this object.
-	 */
-	@Override
-	public ContainerMetric getContainerMetric() {
-		return this;
-	}
-
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain HttpMetric}.
-	 */
-	@Override
-	public HttpMetric getHttpMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_HTTP+".");
-	}
-	 
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain ApplicationMetric}.
-	 */
-	@Override
-	public ApplicationMetric getApplicationMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_APPLICATION+".");
 	}
 
 	public long getTimestamp() {
@@ -168,12 +138,12 @@ public class ContainerMetric implements AutoscalerMetric {
 		this.space = space;
 	}
 
-	public String getOrganization_guid() {
-		return organization_guid;
+	public String getOrganizationGuid() {
+		return organizationGuid;
 	}
 
-	public void setOrganization_guid(String organization_guid) {
-		this.organization_guid = organization_guid;
+	public void setOrganizationGuid(String organizationGuid) {
+		this.organizationGuid = organizationGuid;
 	}
 
 	/**
@@ -192,7 +162,7 @@ public class ContainerMetric implements AutoscalerMetric {
 				+ " , "
 				+ "\"space\" : \"" + space + "\""
 				+ " , "
-				+ "\"organization_guid\" : \"" + organization_guid + "\""
+				+ "\"organizationGuid\" : \"" + organizationGuid + "\""
 				+ " , "
 				+ "\"cpu\" : \"" + cpu + "\""
 				+ " , "
@@ -214,7 +184,7 @@ public class ContainerMetric implements AutoscalerMetric {
 	public boolean equals(ContainerMetric other) {
 		return (timestamp == other.getTimestamp()) && (metricName.equals(other.getMetricName()))  && (appId.equals(other.getAppId()))
 				&& (cpu == other.getCpu()) && (ram == other.getRam()) && (instanceIndex == other.getInstanceIndex()
-				&& (appName == other.getAppName()) && (space == other.getSpace()) && (organization_guid == other.organization_guid));
+				&& (appName == other.getAppName()) && (space == other.getSpace()) && (organizationGuid == other.organizationGuid));
 	}
 	
 	/**

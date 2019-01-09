@@ -1,13 +1,11 @@
 package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.evoila.cf.autoscaler.kafka.protobuf.PbHttpMetric;
-
 /**
  * Wrapper class to store information about the controller requests of an application.
  * @author Marius Berger
  *
  */
-public class HttpMetric implements AutoscalerMetric{
+public class HttpMetric implements AutoscalerMetric {
 	
 	private int requests;
 	private int latency;
@@ -17,15 +15,11 @@ public class HttpMetric implements AutoscalerMetric{
 	private String appId;
 	private String metricName;
 	private String description;
-	
-	
+
 	/**
-	 * Constructor for processing a {@linkplain PbHttpMetric.ProtoHttpMetric}.
-	 * @param metric Protobuf controller metric to get fields from
+	 * Default constructor in order to make the jackson ObjectMapper work
 	 */
-	public HttpMetric(PbHttpMetric.ProtoHttpMetric metric) {
-		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId(), metric.getRequests(), metric.getLatency(), metric.getDescription());
-	}
+	public HttpMetric() {}
 	
 	/**
 	 * Constructor with all fields.
@@ -54,36 +48,13 @@ public class HttpMetric implements AutoscalerMetric{
 				, other.getLatency(), other.getDescription());
 	}
 	
+
 	/**
 	 * Returns a String representation of the controller metric type.
 	 */
 	@Override
 	public String getType() {
 		return AutoscalerMetric.TYPE_HTTP;
-	}
-
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain ContainerMetric}.
-	 */
-	@Override
-	public ContainerMetric getContainerMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_CONTAINER+".");
-	}
-	
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain ApplicationMetric}.
-	 */
-	@Override
-	public ApplicationMetric getApplicationMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_APPLICATION+".");
-	}
-
-	/**
-	 * Returns this object.
-	 */
-	@Override
-	public HttpMetric getHttpMetric() {
-		return this;
 	}
 	
 	public long getTimestamp() {

@@ -1,7 +1,5 @@
 package de.evoila.cf.autoscaler.kafka.messages;
 
-import de.evoila.cf.autoscaler.kafka.protobuf.PbLogMessage;
-
 /**
  * Created by reneschollmeyer, evoila on 07.03.18.
  */
@@ -15,20 +13,14 @@ public class LogMessage {
     private String appName;
     private String space;
     private String organization;
-    private String organization_guid;
+    private String organizationGuid;
     private String sourceInstance;
 
-    public LogMessage(PbLogMessage.ProtoLogMessage protoLogMessage) {
-        this(protoLogMessage.getTimestamp(), protoLogMessage.getLogMessage(),
-                protoLogMessage.getLogMessageType(), protoLogMessage.getSourceType(), protoLogMessage.getAppId(),
-                protoLogMessage.getAppName(), protoLogMessage.getSpace(),
-                protoLogMessage.getOrganization(), protoLogMessage.getOrganizationGuid(),
-                protoLogMessage.getSourceInstance());
-    }
+    public LogMessage() {}
 
     public LogMessage(LogMessage other) {
         this(other.getTimestamp(), other.getLogMessage(), other.getLogMessageType(), other.getSourceType(),
-                other.getAppId(), other.getAppName(), other.getSpace(), other.getOrganization(), other.getOrganization_guid(),
+                other.getAppId(), other.getAppName(), other.getSpace(), other.getOrganization(), other.getOrganizationGuid(),
                 other.getSourceInstance());
     }
 
@@ -42,7 +34,7 @@ public class LogMessage {
         this.appName = appName;
         this.space = space;
         this.organization = organization;
-        this.organization_guid = organization_guid;
+        this.organizationGuid = organization_guid;
         this.sourceInstance = sourceInstance;
     }
 
@@ -94,12 +86,12 @@ public class LogMessage {
 
     public void setOrganization(String organization) { this.organization = organization; }
 
-    public String getOrganization_guid() {
-        return organization_guid;
+    public String getOrganizationGuid() {
+        return organizationGuid;
     }
 
-    public void setOrganization_guid(String organization_guid) {
-        this.organization_guid = organization_guid;
+    public void setOrganizationGuid(String organizationGuid) {
+        this.organizationGuid = organizationGuid;
     }
 
     public String getSourceInstance() {

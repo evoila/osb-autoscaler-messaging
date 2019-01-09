@@ -28,7 +28,9 @@ public class KafkaJsonProducer {
     public KafkaJsonProducer(KafkaPropertiesBean kafkaProperties) {
         this.kafkaProperties = kafkaProperties;
         this.gson = new Gson();
+    }
 
+    public void initializeKafkaProducer() {
         Properties properties = new Properties();
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
         properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 33554432);
