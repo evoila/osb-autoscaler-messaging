@@ -1,5 +1,6 @@
 package de.evoila.cf.autoscaler.kafka;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -85,10 +86,7 @@ public class ByteConsumerThread extends Thread{
 
         try {
             while (true) {
-                /**
-                 * poll(long timeout) deprecated, soon to be kafkaConsumer.poll(Duration.ofMillis(100))
-                 */
-                ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(100);
+                ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(Duration.ofMillis(100));
                 for (ConsumerRecord<String, byte[]> record : records) {
                 	consumer.consume(record.value());
                 }
