@@ -1,9 +1,5 @@
 package de.evoila.cf.autoscaler.kafka;
 
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.Properties;
-
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -11,6 +7,9 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
+import java.util.Properties;
 
 /**
  * A Thread subscribing to a Kafka topic and returning messages in byte form to its consumer.
@@ -86,7 +85,7 @@ public class ByteConsumerThread extends Thread{
 
         try {
             while (true) {
-                ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(Duration.ofMillis(100));
+                ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(100);
                 for (ConsumerRecord<String, byte[]> record : records) {
                 	consumer.consume(record.value());
                 }
