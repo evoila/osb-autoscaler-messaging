@@ -17,32 +17,32 @@ public class KafkaPropertiesBean {
 	 * IP or URL of the Kafka host
 	 */
 	private String host;
-	
+
 	/**
 	 * Port to connect to Kafka
 	 */
 	private int port;
-	
+
 	/**
 	 * Topic for HTTP metrics
 	 */
 	private String metricHttpTopic;
-	
+
 	/**
 	 * Topic for Container metrics
 	 */
 	private String metricContainerTopic;
-	
+
 	/**
 	 * Topic for Application metrics
 	 */
 	private String metricApplicationTopic;
-	
+
 	/**
 	 * Topic for Scaling logs
 	 */
 	private String scalingTopic;
-	
+
 	/**
 	 * Topic for predictions
 	 */
@@ -57,42 +57,52 @@ public class KafkaPropertiesBean {
 	 * Topic for log messages
 	 */
 	private String logMessageTopic;
-	
+
 	/**
 	 * Count of Container consumers to start
 	 */
 	private int containerConsumerCount;
-	
+
 	/**
 	 * Count of HTTP consumers to start
 	 */
 	private int requestConsumerCount;
-	
+
 	/**
 	 * Id of the group for producers
 	 */
 	private String producerGroupId;
-	
+
 	/**
 	 * Id of the group for Container consumers
 	 */
 	private String containerConsumerGroupId;
-	
+
 	/**
 	 * Id of the group for HTTP consumers
 	 */
 	private String httpConsumerGroupId;
-	
+
 	/**
 	 * Id of the group for prediction consumers
 	 */
 	private String predictionConsumerGroupId;
 
 	/**
+	 * Whether or not the Kafka producer should be started
+	 */
+	private boolean producerEnabled;
+
+	/**
+	 * Whether or not the Kafka consumer should be started
+	 */
+	private boolean consumerEnabled;
+
+	/**
 	 * Constructor for Spring to inject the bean.
 	 */
 	public KafkaPropertiesBean() { }
-	
+
 
 	public String getHost() {
 		return host;
@@ -133,7 +143,7 @@ public class KafkaPropertiesBean {
 	public void setMetricContainerTopic(String metricContainerTopic) {
 		this.metricContainerTopic = metricContainerTopic;
 	}
-	
+
 	public String getMetricApplicationTopic() {
 		return metricApplicationTopic;
 	}
@@ -204,12 +214,28 @@ public class KafkaPropertiesBean {
 	public void setHttpConsumerGroupId(String httpConsumerGroupId) {
 		this.httpConsumerGroupId = httpConsumerGroupId;
 	}
-	
+
 	public String getPredictionConsumerGroupId() {
 		return predictionConsumerGroupId;
 	}
-	
+
 	public void setPredictionConsumerGroupId(String predictionConsumerGroupId) {
 		this.predictionConsumerGroupId = predictionConsumerGroupId;
+	}
+
+	public boolean isProducerEnabled() {
+		return producerEnabled;
+	}
+
+	public void setProducerEnabled(boolean producerEnabled) {
+		this.producerEnabled = producerEnabled;
+	}
+
+	public boolean isConsumerEnabled() {
+		return consumerEnabled;
+	}
+
+	public void setConsumerEnabled(boolean consumerEnabled) {
+		this.consumerEnabled = consumerEnabled;
 	}
 }

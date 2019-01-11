@@ -2,7 +2,6 @@ package de.evoila.cf.autoscaler.kafka.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import de.evoila.cf.autoscaler.kafka.KafkaPropertiesBean;
 import de.evoila.cf.autoscaler.kafka.messages.ApplicationMetric;
 import de.evoila.cf.autoscaler.kafka.messages.ContainerMetric;
@@ -16,7 +15,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.Properties;
@@ -25,7 +24,7 @@ import java.util.Properties;
  * Created by reneschollmeyer, evoila on 16.10.18.
  */
 @Service
-@ConditionalOnBean(KafkaPropertiesBean.class)
+@ConditionalOnProperty(value = "kafka.producerEnabled", havingValue = "true")
 public class KafkaJsonProducer {
 
     private static Logger log = LoggerFactory.getLogger(KafkaJsonProducer.class);
@@ -38,7 +37,6 @@ public class KafkaJsonProducer {
 
     public KafkaJsonProducer(KafkaPropertiesBean kafkaProperties) {
         this.kafkaProperties = kafkaProperties;
-
         objectMapper = new ObjectMapper();
 
         Properties properties = new Properties();
