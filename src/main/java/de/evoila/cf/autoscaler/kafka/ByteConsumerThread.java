@@ -8,6 +8,7 @@ import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -85,7 +86,7 @@ public class ByteConsumerThread extends Thread{
 
         try {
             while (true) {
-                ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(100);
+                ConsumerRecords<String, byte[]> records = kafkaConsumer.poll(Duration.ofMillis(100));
                 for (ConsumerRecord<String, byte[]> record : records) {
                 	consumer.consume(record.value());
                 }
