@@ -27,11 +27,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- CAUTION! kafka.version needs to be defined in parent pom aswell -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>2.0.0</version>
+            <version>${kafka.version}</version>
+            <!--
+            The version is defined by the kafka.version property, that should be defined in the parent pom or "above".
+            Be aware, that the spring parent pom does already contain a kafka.version property, that will be used if nothing is defined elsewhere.
+            -->
         </dependency>
     </dependencies>
 
