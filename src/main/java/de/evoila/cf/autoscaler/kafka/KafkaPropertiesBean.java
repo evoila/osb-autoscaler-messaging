@@ -99,6 +99,41 @@ public class KafkaPropertiesBean {
 	private boolean consumerEnabled;
 
 	/**
+	 * Whether kafka is secured or not
+	 */
+	private boolean secure;
+
+	/**
+	 * Ca Certificate from Kafka Server
+	 */
+	private String certificate;
+
+	/**
+	 * Password for the keystore that will be created
+	 */
+	private String keyStorePassword;
+
+	/**
+	 * Password for the truststore that will be created
+	 */
+	private String trustStorePassword;
+
+	/**
+	 * Security protocol for communication with kafka
+	 */
+	private String securityProtocol;
+
+	/**
+	 * Username for SASL connection with kafka
+	 */
+	private String saslClientUsername;
+
+	/**
+	 * Password for SASL connection with kafka
+	 */
+	private String saslClientPassword;
+
+	/**
 	 * Constructor for Spring to inject the bean.
 	 */
 	public KafkaPropertiesBean() { }
@@ -237,5 +272,61 @@ public class KafkaPropertiesBean {
 
 	public void setConsumerEnabled(boolean consumerEnabled) {
 		this.consumerEnabled = consumerEnabled;
+	}
+
+	public boolean isSecure() {
+		return secure;
+	}
+
+	public void setSecure(boolean secure) {
+		this.secure = secure;
+	}
+
+	public String getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(String certificate) {
+		this.certificate = certificate;
+	}
+
+	public String getKeyStorePassword() {
+		return keyStorePassword;
+	}
+
+	public void setKeyStorePassword(String keyStorePassword) {
+		this.keyStorePassword = keyStorePassword;
+	}
+
+	public String getTrustStorePassword() {
+		return trustStorePassword;
+	}
+
+	public void setTrustStorePassword(String trustStorePassword) {
+		this.trustStorePassword = trustStorePassword;
+	}
+
+	public String getSecurityProtocol() {
+		return securityProtocol;
+	}
+
+	public void setSecurityProtocol(String securityProtocol) {
+		this.securityProtocol = securityProtocol;
+	}
+
+	public String getSaslClientUsername() {
+		return saslClientUsername;
+	}
+
+	public void setSaslClientUsername(String saslClientUsername) {
+		this.saslClientUsername = saslClientUsername;
+	}
+
+	public String getSaslClientPassword() {
+		return saslClientPassword;
+	}
+
+	public void setSaslClientPassword(String saslClientPassword) {
+		this.saslClientPassword = saslClientPassword;
 	}
 }
