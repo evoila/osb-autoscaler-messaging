@@ -38,8 +38,8 @@ public class CertificateHandler {
 
         try {
             Certificate caCert = loadCertificate(kafkaPropertiesBean.getCertificate());
-            char[] keyStorePassword = kafkaPropertiesBean.getKeyStorePassword().toCharArray();
-            char[] trustStorePassword = kafkaPropertiesBean.getTrustStorePassword().toCharArray();
+            char[] keyStorePassword = kafkaPropertiesBean.getKeystorePassword().toCharArray();
+            char[] trustStorePassword = kafkaPropertiesBean.getTruststorePassword().toCharArray();
 
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, keyStorePassword);

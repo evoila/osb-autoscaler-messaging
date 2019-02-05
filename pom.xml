@@ -36,6 +36,11 @@
             Be aware, that the spring parent pom does already contain a kafka.version property, that will be used if nothing is defined elsewhere.
             -->
         </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.56</version>
+        </dependency>
     </dependencies>
 
     <build>

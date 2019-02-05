@@ -8,11 +8,14 @@ import de.evoila.cf.autoscaler.kafka.messages.ContainerMetric;
 import de.evoila.cf.autoscaler.kafka.messages.HttpMetric;
 import de.evoila.cf.autoscaler.kafka.messages.ScalingLog;
 import de.evoila.cf.autoscaler.kafka.model.BindingInformation;
+import de.evoila.cf.autoscaler.kafka.security.CertificateHandler;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.config.SaslConfigs;
+import org.apache.kafka.common.config.SslConfigs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -27,6 +30,8 @@ import java.util.Properties;
 @ConditionalOnProperty(value = "kafka.producerEnabled", havingValue = "true")
 public class KafkaJsonProducer {
 
+    private static final String SECURITY_PROTOCOL = "security.protocol";
+
     private static Logger log = LoggerFactory.getLogger(KafkaJsonProducer.class);
 
     private KafkaPropertiesBean kafkaProperties;
@@ -35,8 +40,11 @@ public class KafkaJsonProducer {
 
     private Producer<String, String> producer;
 
-    public KafkaJsonProducer(KafkaPropertiesBean kafkaProperties) {
+    private CertificateHandler certificateHandler;
+
+    public KafkaJsonProducer(KafkaPropertiesBean kafkaProperties, CertificateHandler certificateHandler) {
         this.kafkaProperties = kafkaProperties;
+        this.certificateHandler = certificateHandler;
         objectMapper = new ObjectMapper();
 
         Properties properties = new Properties();
@@ -47,6 +55,21 @@ public class KafkaJsonProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getProducerGroupId() == null ? "default-producer-group-id" : kafkaProperties.getProducerGroupId());
+
+        if(kafkaProperties.isSecure()) {
+            String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+            String jaasCfg = String.format(jaasTemplate, kafkaProperties.getSaslClientUsername(), kafkaProperties.getSaslClientPassword());
+
+            properties.put(SECURITY_PROTOCOL, kafkaProperties.getSecurityProtocol());
+            properties.put(SaslConfigs.SASL_MECHANISM, "SCRAM-SHA-256");
+            properties.put(SaslConfigs.SASL_JAAS_CONFIG, jaasCfg);
+            properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "client.truststore.jks");
+            properties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, kafkaProperties.getTruststorePassword());
+            properties.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, "client.keystore.jks");
+            properties.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, kafkaProperties.getKeystorePassword());
+            // This one is needed to skip verification of self signed certificates
+            properties.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
+        }
 
         producer = new KafkaProducer<>(properties);
     }

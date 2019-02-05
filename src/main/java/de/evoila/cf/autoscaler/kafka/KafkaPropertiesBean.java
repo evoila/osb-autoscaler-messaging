@@ -111,12 +111,12 @@ public class KafkaPropertiesBean {
 	/**
 	 * Password for the keystore that will be created
 	 */
-	private String keyStorePassword;
+	private String keystorePassword;
 
 	/**
 	 * Password for the truststore that will be created
 	 */
-	private String trustStorePassword;
+	private String truststorePassword;
 
 	/**
 	 * Security protocol for communication with kafka
@@ -290,20 +290,20 @@ public class KafkaPropertiesBean {
 		this.certificate = certificate;
 	}
 
-	public String getKeyStorePassword() {
-		return keyStorePassword;
+	public String getKeystorePassword() {
+		return keystorePassword;
 	}
 
-	public void setKeyStorePassword(String keyStorePassword) {
-		this.keyStorePassword = keyStorePassword;
+	public void setKeystorePassword(String keystorePassword) {
+		this.keystorePassword = keystorePassword;
 	}
 
-	public String getTrustStorePassword() {
-		return trustStorePassword;
+	public String getTruststorePassword() {
+		return truststorePassword;
 	}
 
-	public void setTrustStorePassword(String trustStorePassword) {
-		this.trustStorePassword = trustStorePassword;
+	public void setTruststorePassword(String truststorePassword) {
+		this.truststorePassword = truststorePassword;
 	}
 
 	public String getSecurityProtocol() {

@@ -95,9 +95,9 @@ public class ByteConsumerThread extends Thread{
             configProperties.put(SaslConfigs.SASL_MECHANISM, "SCRAM-SHA-256");
             configProperties.put(SaslConfigs.SASL_JAAS_CONFIG, jaasCfg);
             configProperties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "client.truststore.jks");
-            configProperties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, kafkaPropertiesBean.getTrustStorePassword());
+            configProperties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, kafkaPropertiesBean.getTruststorePassword());
             configProperties.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, "client.keystore.jks");
-            configProperties.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, kafkaPropertiesBean.getKeyStorePassword());
+            configProperties.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, kafkaPropertiesBean.getKeystorePassword());
             // This one is needed to skip verification of self signed certificates
             configProperties.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
         }
