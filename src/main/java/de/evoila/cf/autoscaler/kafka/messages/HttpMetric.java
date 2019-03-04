@@ -9,10 +9,12 @@ public class HttpMetric implements AutoscalerMetric {
 	
 	private int requests;
 	private int latency;
-	
 	private long timestamp;
-	
 	private String appId;
+	private String appName;
+	private String space;
+	private String organization;
+	private String organizationGuid;
 	private String metricName;
 	private String description;
 
@@ -30,10 +32,15 @@ public class HttpMetric implements AutoscalerMetric {
 	 * @param latency {@linkplain #latency}
 	 * @param description {@linkplain #description}
 	 */
-	public HttpMetric(long timestamp, String metricName, String appId, int requests, int latency, String description) {
+	public HttpMetric(long timestamp, String metricName, String appId, String appName, String space, String organization,
+					  String organizationGuid, int requests, int latency, String description) {
 		this.timestamp = timestamp;
 		this.metricName = metricName;
 		this.appId = appId;
+		this.appName = appName;
+		this.space = space;
+		this.organization = organization;
+		this.organizationGuid = organizationGuid;
 		this.requests = requests;
 		this.latency = latency;
 		this.description = description;
@@ -44,8 +51,8 @@ public class HttpMetric implements AutoscalerMetric {
 	 * @param other metric to copy
 	 */
 	public HttpMetric(HttpMetric other) {
-		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getRequests()
-				, other.getLatency(), other.getDescription());
+		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(),
+				other.getOrganization(), other.getOrganizationGuid(), other.getRequests(), other.getLatency(), other.getDescription());
 	}
 	
 
@@ -103,6 +110,38 @@ public class HttpMetric implements AutoscalerMetric {
 
 	public void setAppId(String appId) {
 		this.appId = appId;
+	}
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
+
+	public String getSpace() {
+		return space;
+	}
+
+	public void setSpace(String space) {
+		this.space = space;
+	}
+
+	public String getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
+	public String getOrganizationGuid() {
+		return organizationGuid;
+	}
+
+	public void setOrganizationGuid(String organizationGuid) {
+		this.organizationGuid = organizationGuid;
 	}
 
 	/**
