@@ -41,19 +41,19 @@ public class CertificateHandler {
             char[] keyStorePassword = kafkaPropertiesBean.getKeystorePassword().toCharArray();
             char[] trustStorePassword = kafkaPropertiesBean.getTruststorePassword().toCharArray();
 
-            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            KeyStore keyStore = KeyStore.getInstance("jks");
             keyStore.load(null, keyStorePassword);
             keyStore.setCertificateEntry("CARoot", caCert);
 
-            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            KeyStore trustStore = KeyStore.getInstance("jks");
             trustStore.load(null, trustStorePassword);
             trustStore.setCertificateEntry("CARoot", caCert);
 
-            FileOutputStream fos = new FileOutputStream("client.keystore.jks");
+            FileOutputStream fos = new FileOutputStream(System.getProperty("java.io.tmpdir") + "/client.keystore.jks");
             keyStore.store(fos, keyStorePassword);
             fos.close();
 
-            fos = new FileOutputStream("client.truststore.jks");
+            fos = new FileOutputStream(System.getProperty("java.io.tmpdir") + "/client.truststore.jks");
             trustStore.store(fos, trustStorePassword);
             fos.close();
 

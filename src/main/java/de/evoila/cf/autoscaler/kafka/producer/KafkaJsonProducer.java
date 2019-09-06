@@ -63,9 +63,9 @@ public class KafkaJsonProducer {
             properties.put(SECURITY_PROTOCOL, kafkaProperties.getSecurityProtocol());
             properties.put(SaslConfigs.SASL_MECHANISM, "SCRAM-SHA-256");
             properties.put(SaslConfigs.SASL_JAAS_CONFIG, jaasCfg);
-            properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "client.truststore.jks");
+            properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, System.getProperty("java.io.tmpdir") + "/client.keystore.jks");
             properties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, kafkaProperties.getTruststorePassword());
-            properties.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, "client.keystore.jks");
+            properties.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, System.getProperty("java.io.tmpdir") + "/client.keystore.jks");
             properties.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, kafkaProperties.getKeystorePassword());
             // This one is needed to skip verification of self signed certificates
             properties.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
