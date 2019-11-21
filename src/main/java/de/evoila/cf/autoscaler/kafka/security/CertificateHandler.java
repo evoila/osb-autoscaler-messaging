@@ -36,29 +36,31 @@ public class CertificateHandler {
     public CertificateHandler(KafkaPropertiesBean kafkaPropertiesBean) {
         this.kafkaPropertiesBean = kafkaPropertiesBean;
 
-        try {
-            Certificate caCert = loadCertificate(kafkaPropertiesBean.getCertificate());
-            char[] keyStorePassword = kafkaPropertiesBean.getKeystorePassword().toCharArray();
-            char[] trustStorePassword = kafkaPropertiesBean.getTruststorePassword().toCharArray();
+        if(kafkaPropertiesBean.isSecure()) {
+            try {
+                Certificate caCert = loadCertificate(kafkaPropertiesBean.getCertificate());
+                char[] keyStorePassword = kafkaPropertiesBean.getKeystorePassword().toCharArray();
+                char[] trustStorePassword = kafkaPropertiesBean.getTruststorePassword().toCharArray();
 
-            KeyStore keyStore = KeyStore.getInstance("jks");
-            keyStore.load(null, keyStorePassword);
-            keyStore.setCertificateEntry("CARoot", caCert);
+                KeyStore keyStore = KeyStore.getInstance("jks");
+                keyStore.load(null, keyStorePassword);
+                keyStore.setCertificateEntry("CARoot", caCert);
 
-            KeyStore trustStore = KeyStore.getInstance("jks");
-            trustStore.load(null, trustStorePassword);
-            trustStore.setCertificateEntry("CARoot", caCert);
+                KeyStore trustStore = KeyStore.getInstance("jks");
+                trustStore.load(null, trustStorePassword);
+                trustStore.setCertificateEntry("CARoot", caCert);
 
-            FileOutputStream fos = new FileOutputStream(System.getProperty("java.io.tmpdir") + "/client.keystore.jks");
-            keyStore.store(fos, keyStorePassword);
-            fos.close();
+                FileOutputStream fos = new FileOutputStream( System.getProperty("java.io.tmpdir") + "/client.keystore.jks");
+                keyStore.store(fos, keyStorePassword);
+                fos.close();
 
-            fos = new FileOutputStream(System.getProperty("java.io.tmpdir") + "/client.truststore.jks");
-            trustStore.store(fos, trustStorePassword);
-            fos.close();
+                fos = new FileOutputStream( System.getProperty("java.io.tmpdir") + "/client.truststore.jks");
+                trustStore.store(fos, trustStorePassword);
+                fos.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
