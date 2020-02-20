@@ -13,6 +13,7 @@ public class HttpMetric implements AutoscalerMetric {
 	private String appId;
 	private String appName;
 	private String space;
+	private String spaceId;
 	private String organization;
 	private String organizationGuid;
 	private String metricName;
@@ -32,13 +33,14 @@ public class HttpMetric implements AutoscalerMetric {
 	 * @param latency {@linkplain #latency}
 	 * @param description {@linkplain #description}
 	 */
-	public HttpMetric(long timestamp, String metricName, String appId, String appName, String space, String organization,
-					  String organizationGuid, int requests, int latency, String description) {
+	public HttpMetric(long timestamp, String metricName, String appId, String appName, String space, String spaceId,
+					  String organization, String organizationGuid, int requests, int latency, String description) {
 		this.timestamp = timestamp;
 		this.metricName = metricName;
 		this.appId = appId;
 		this.appName = appName;
 		this.space = space;
+		this.spaceId = spaceId;
 		this.organization = organization;
 		this.organizationGuid = organizationGuid;
 		this.requests = requests;
@@ -51,7 +53,7 @@ public class HttpMetric implements AutoscalerMetric {
 	 * @param other metric to copy
 	 */
 	public HttpMetric(HttpMetric other) {
-		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(),
+		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(), other.getSpaceId(),
 				other.getOrganization(), other.getOrganizationGuid(), other.getRequests(), other.getLatency(), other.getDescription());
 	}
 	
@@ -122,6 +124,14 @@ public class HttpMetric implements AutoscalerMetric {
 
 	public String getSpace() {
 		return space;
+	}
+
+	public String getSpaceId() {
+		return spaceId;
+	}
+
+	public void setSpaceId(String spaceId) {
+		this.spaceId = spaceId;
 	}
 
 	public void setSpace(String space) {

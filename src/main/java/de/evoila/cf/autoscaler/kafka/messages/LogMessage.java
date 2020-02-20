@@ -12,6 +12,7 @@ public class LogMessage {
     private String appId;
     private String appName;
     private String space;
+    private String spaceId;
     private String organization;
     private String organizationGuid;
     private String sourceInstance;
@@ -20,12 +21,13 @@ public class LogMessage {
 
     public LogMessage(LogMessage other) {
         this(other.getTimestamp(), other.getLogMessage(), other.getLogMessageType(), other.getSourceType(),
-                other.getAppId(), other.getAppName(), other.getSpace(), other.getOrganization(), other.getOrganizationGuid(),
-                other.getSourceInstance());
+                other.getAppId(), other.getAppName(), other.getSpace(), other.getSpaceId(), other.getOrganization(),
+                other.getOrganizationGuid(), other.getSourceInstance());
     }
 
     public LogMessage(long timestamp, String logMessage, String logMessageType, String sourceType, String appId,
-                      String appName, String space, String organization, String organization_guid, String sourceInstance) {
+                      String appName, String space, String spaceId, String organization, String organization_guid,
+                      String sourceInstance) {
         this.timestamp = timestamp;
         this.logMessage = logMessage;
         this.logMessageType = logMessageType;
@@ -33,6 +35,7 @@ public class LogMessage {
         this.appId = appId;
         this.appName = appName;
         this.space = space;
+        this.spaceId = spaceId;
         this.organization = organization;
         this.organizationGuid = organization_guid;
         this.sourceInstance = sourceInstance;
@@ -81,6 +84,14 @@ public class LogMessage {
     public String getSpace() { return space; }
 
     public void setSpace(String space) { this.space = space; }
+
+    public String getSpaceId() {
+        return spaceId;
+    }
+
+    public void setSpaceId(String spaceId) {
+        this.spaceId = spaceId;
+    }
 
     public String getOrganization() { return organization; }
 
