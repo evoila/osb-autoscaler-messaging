@@ -1,4 +1,4 @@
-package de.cf.autoscaler.kafka;
+package de.evoila.cf.autoscaler.kafka;
 
 /**
  * Interface for Consumer to read messages from the message broker.
@@ -37,7 +37,9 @@ public interface AutoScalerConsumer {
 	 * Stop the consumer.
 	 */
 	public void stopConsumer();
-	
+
+	public void removeConsumer(String topicName);
+
 	/**
 	 * Return the type of message the consumer is consuming.
 	 * @return String representation of the type of the message

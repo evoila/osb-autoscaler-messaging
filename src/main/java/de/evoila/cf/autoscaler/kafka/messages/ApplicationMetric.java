@@ -1,6 +1,4 @@
-package de.cf.autoscaler.kafka.messages;
-
-import de.cf.autoscaler.kafka.protobuf.ProtobufApplicationMetricWrapper.ProtoApplicationMetric;
+package de.evoila.cf.autoscaler.kafka.messages;
 
 /**
  * Wrapper class to store information about the state of an application in one period.
@@ -51,7 +49,12 @@ public class ApplicationMetric implements AutoscalerMetric {
 	 * optional description of this metric; will not be used for computation
 	 */
 	private String description;
-	
+
+	/**
+	 * Default constructor in order to make the jackson ObjectMapper work
+	 */
+	public ApplicationMetric() {}
+
 	/**
 	 * Constructor with all fields.
 	 * @param cpu {@linkplain #cpu}
@@ -80,15 +83,6 @@ public class ApplicationMetric implements AutoscalerMetric {
 	}
 	
 	/**
-	 * Constructor for processing a {@linkplain ProtoApplicationMetric}.
-	 * @param proto Protobuf application metric to get fields from
-	 */
-	public ApplicationMetric(ProtoApplicationMetric proto) {
-		this(proto.getCpu(), proto.getRam(), proto.getInstanceCount(), proto.getRequests(), proto.getLatency(), proto.getQuotient(),
-				proto.getTimestamp(), proto.getAppId(), proto.getMetricName(), proto.getDescription());
-	}
-	
-	/**
 	 * Copy constructor
 	 * @param other metric to copy
 	 */
@@ -103,29 +97,6 @@ public class ApplicationMetric implements AutoscalerMetric {
 	@Override
 	public String getType() {
 		return AutoscalerMetric.TYPE_APPLICATION;
-	}
-
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain ContainerMetric}.
-	 */
-	@Override
-	public ContainerMetric getContainerMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_CONTAINER+".");
-	}
-
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain HttpMetric}.
-	 */
-	@Override
-	public HttpMetric getHttpMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_HTTP+".");
-	}
-	
-	/**
-	 * Returns this object.
-	 */
-	public ApplicationMetric getApplicationMetric() throws InvalidMetricTypeException {
-		return this;
 	}
 
 	public int getCpu() {

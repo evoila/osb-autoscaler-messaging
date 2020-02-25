@@ -1,6 +1,7 @@
-package de.cf.autoscaler.kafka;
+package de.evoila.cf.autoscaler.kafka;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * A bean for storing properties dedicated to Kafka.
@@ -8,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author Marius Berger
  *
  */
+@Configuration
 @ConfigurationProperties(prefix = "kafka")
 public class KafkaPropertiesBean {
 
@@ -15,32 +17,32 @@ public class KafkaPropertiesBean {
 	 * IP or URL of the Kafka host
 	 */
 	private String host;
-	
+
 	/**
 	 * Port to connect to Kafka
 	 */
 	private int port;
-	
+
 	/**
 	 * Topic for HTTP metrics
 	 */
 	private String metricHttpTopic;
-	
+
 	/**
 	 * Topic for Container metrics
 	 */
 	private String metricContainerTopic;
-	
+
 	/**
 	 * Topic for Application metrics
 	 */
 	private String metricApplicationTopic;
-	
+
 	/**
 	 * Topic for Scaling logs
 	 */
 	private String scalingTopic;
-	
+
 	/**
 	 * Topic for predictions
 	 */
@@ -50,42 +52,92 @@ public class KafkaPropertiesBean {
 	 * Topic for binding notifications
 	 */
 	private String bindingTopic;
-	
+
+	/**
+	 * Topic for log messages
+	 */
+	private String logMessageTopic;
+
 	/**
 	 * Count of Container consumers to start
 	 */
 	private int containerConsumerCount;
-	
+
 	/**
 	 * Count of HTTP consumers to start
 	 */
 	private int requestConsumerCount;
-	
+
 	/**
 	 * Id of the group for producers
 	 */
 	private String producerGroupId;
-	
+
 	/**
 	 * Id of the group for Container consumers
 	 */
 	private String containerConsumerGroupId;
-	
+
 	/**
 	 * Id of the group for HTTP consumers
 	 */
 	private String httpConsumerGroupId;
-	
+
 	/**
 	 * Id of the group for prediction consumers
 	 */
 	private String predictionConsumerGroupId;
 
 	/**
+	 * Whether or not the Kafka producer should be started
+	 */
+	private boolean producerEnabled;
+
+	/**
+	 * Whether or not the Kafka consumer should be started
+	 */
+	private boolean consumerEnabled;
+
+	/**
+	 * Whether kafka is secured or not
+	 */
+	private boolean secure;
+
+	/**
+	 * Ca Certificate from Kafka Server
+	 */
+	private String certificate;
+
+	/**
+	 * Password for the keystore that will be created
+	 */
+	private String keystorePassword;
+
+	/**
+	 * Password for the truststore that will be created
+	 */
+	private String truststorePassword;
+
+	/**
+	 * Security protocol for communication with kafka
+	 */
+	private String securityProtocol;
+
+	/**
+	 * Username for SASL connection with kafka
+	 */
+	private String saslClientUsername;
+
+	/**
+	 * Password for SASL connection with kafka
+	 */
+	private String saslClientPassword;
+
+	/**
 	 * Constructor for Spring to inject the bean.
 	 */
 	public KafkaPropertiesBean() { }
-	
+
 
 	public String getHost() {
 		return host;
@@ -126,7 +178,7 @@ public class KafkaPropertiesBean {
 	public void setMetricContainerTopic(String metricContainerTopic) {
 		this.metricContainerTopic = metricContainerTopic;
 	}
-	
+
 	public String getMetricApplicationTopic() {
 		return metricApplicationTopic;
 	}
@@ -149,6 +201,12 @@ public class KafkaPropertiesBean {
 
 	public void setBindingTopic(String bindingTopic) {
 		this.bindingTopic = bindingTopic;
+	}
+
+	public String getLogMessageTopic() { return logMessageTopic; }
+
+	public void setLogMessageTopic(String logMessageTopic) {
+		this.logMessageTopic = logMessageTopic;
 	}
 
 	public int getContainerConsumerCount() {
@@ -191,12 +249,84 @@ public class KafkaPropertiesBean {
 	public void setHttpConsumerGroupId(String httpConsumerGroupId) {
 		this.httpConsumerGroupId = httpConsumerGroupId;
 	}
-	
+
 	public String getPredictionConsumerGroupId() {
 		return predictionConsumerGroupId;
 	}
-	
+
 	public void setPredictionConsumerGroupId(String predictionConsumerGroupId) {
 		this.predictionConsumerGroupId = predictionConsumerGroupId;
+	}
+
+	public boolean isProducerEnabled() {
+		return producerEnabled;
+	}
+
+	public void setProducerEnabled(boolean producerEnabled) {
+		this.producerEnabled = producerEnabled;
+	}
+
+	public boolean isConsumerEnabled() {
+		return consumerEnabled;
+	}
+
+	public void setConsumerEnabled(boolean consumerEnabled) {
+		this.consumerEnabled = consumerEnabled;
+	}
+
+	public boolean isSecure() {
+		return secure;
+	}
+
+	public void setSecure(boolean secure) {
+		this.secure = secure;
+	}
+
+	public String getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(String certificate) {
+		this.certificate = certificate;
+	}
+
+	public String getKeystorePassword() {
+		return keystorePassword;
+	}
+
+	public void setKeystorePassword(String keystorePassword) {
+		this.keystorePassword = keystorePassword;
+	}
+
+	public String getTruststorePassword() {
+		return truststorePassword;
+	}
+
+	public void setTruststorePassword(String truststorePassword) {
+		this.truststorePassword = truststorePassword;
+	}
+
+	public String getSecurityProtocol() {
+		return securityProtocol;
+	}
+
+	public void setSecurityProtocol(String securityProtocol) {
+		this.securityProtocol = securityProtocol;
+	}
+
+	public String getSaslClientUsername() {
+		return saslClientUsername;
+	}
+
+	public void setSaslClientUsername(String saslClientUsername) {
+		this.saslClientUsername = saslClientUsername;
+	}
+
+	public String getSaslClientPassword() {
+		return saslClientPassword;
+	}
+
+	public void setSaslClientPassword(String saslClientPassword) {
+		this.saslClientPassword = saslClientPassword;
 	}
 }

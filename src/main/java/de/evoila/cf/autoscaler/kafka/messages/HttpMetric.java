@@ -1,31 +1,27 @@
-package de.cf.autoscaler.kafka.messages;
-
-import de.cf.autoscaler.kafka.protobuf.ProtobufHttpMetricWrapper.ProtoHttpMetric;
+package de.evoila.cf.autoscaler.kafka.messages;
 
 /**
- * Wrapper class to store information about the http requests of an application.
+ * Wrapper class to store information about the controller requests of an application.
  * @author Marius Berger
  *
  */
-public class HttpMetric implements AutoscalerMetric{
+public class HttpMetric implements AutoscalerMetric {
 	
 	private int requests;
 	private int latency;
-	
 	private long timestamp;
-	
 	private String appId;
+	private String appName;
+	private String space;
+	private String organization;
+	private String organizationGuid;
 	private String metricName;
 	private String description;
-	
-	
+
 	/**
-	 * Constructor for processing a {@linkplain ProtoHttpMetric}.
-	 * @param metric Protobuf http metric to get fields from
+	 * Default constructor in order to make the jackson ObjectMapper work
 	 */
-	public HttpMetric(ProtoHttpMetric metric) {
-		this(metric.getTimestamp(), metric.getMetricName(), metric.getAppId(), metric.getRequests(), metric.getLatency(), metric.getDescription());
-	}
+	public HttpMetric() {}
 	
 	/**
 	 * Constructor with all fields.
@@ -36,10 +32,15 @@ public class HttpMetric implements AutoscalerMetric{
 	 * @param latency {@linkplain #latency}
 	 * @param description {@linkplain #description}
 	 */
-	public HttpMetric(long timestamp, String metricName, String appId, int requests, int latency, String description) {
+	public HttpMetric(long timestamp, String metricName, String appId, String appName, String space, String organization,
+					  String organizationGuid, int requests, int latency, String description) {
 		this.timestamp = timestamp;
 		this.metricName = metricName;
 		this.appId = appId;
+		this.appName = appName;
+		this.space = space;
+		this.organization = organization;
+		this.organizationGuid = organizationGuid;
 		this.requests = requests;
 		this.latency = latency;
 		this.description = description;
@@ -50,40 +51,17 @@ public class HttpMetric implements AutoscalerMetric{
 	 * @param other metric to copy
 	 */
 	public HttpMetric(HttpMetric other) {
-		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getRequests()
-				, other.getLatency(), other.getDescription());
+		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(),
+				other.getOrganization(), other.getOrganizationGuid(), other.getRequests(), other.getLatency(), other.getDescription());
 	}
 	
+
 	/**
-	 * Returns a String representation of the http metric type.
+	 * Returns a String representation of the controller metric type.
 	 */
 	@Override
 	public String getType() {
 		return AutoscalerMetric.TYPE_HTTP;
-	}
-
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain ContainerMetric}.
-	 */
-	@Override
-	public ContainerMetric getContainerMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_CONTAINER+".");
-	}
-	
-	/**
-	 * Throws an {@linkplain InvalidMetricTypeException} as this is not a {@linkplain ApplicationMetric}.
-	 */
-	@Override
-	public ApplicationMetric getApplicationMetric() throws InvalidMetricTypeException {
-		throw new InvalidMetricTypeException("This metric is not from type "+AutoscalerMetric.NAME_APPLICATION+".");
-	}
-
-	/**
-	 * Returns this object.
-	 */
-	@Override
-	public HttpMetric getHttpMetric() {
-		return this;
 	}
 	
 	public long getTimestamp() {
@@ -132,6 +110,38 @@ public class HttpMetric implements AutoscalerMetric{
 
 	public void setAppId(String appId) {
 		this.appId = appId;
+	}
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
+
+	public String getSpace() {
+		return space;
+	}
+
+	public void setSpace(String space) {
+		this.space = space;
+	}
+
+	public String getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
+	public String getOrganizationGuid() {
+		return organizationGuid;
+	}
+
+	public void setOrganizationGuid(String organizationGuid) {
+		this.organizationGuid = organizationGuid;
 	}
 
 	/**

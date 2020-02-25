@@ -1,41 +1,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <groupId>de.cf.autoscaler</groupId>
-  <artifactId>kafka</artifactId>
-  <version>0.1</version>
-  <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.evoila.cf.broker</groupId>
+    <artifactId>osb-autoscaler-messaging</artifactId>
+    <version>1.2.0</version>
+    <packaging>jar</packaging>
+    <name>osb-autoscaler-messaging</name>
 
-  <name>kafka</name>
-  <url>http://maven.apache.org</url>
+    <parent>
+        <groupId>de.evoila.cf.broker</groupId>
+        <artifactId>repo-parent</artifactId>
+        <relativePath>../</relativePath>
+        <version>1.2.0</version>
+    </parent>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <properties>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
-  <dependencies>
-  	<dependency>
-    	<groupId>org.springframework.boot</groupId>	
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>1.5.1.RELEASE</version>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
-	<dependency>
-	    <groupId>org.apache.kafka</groupId>
-	    <artifactId>kafka-clients</artifactId>
-	    <version>1.0.0</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
-	<dependency>
-	    <groupId>com.google.protobuf</groupId>
-	    <artifactId>protobuf-java</artifactId>
-	    <version>3.2.0</version>
-	</dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <!--
+            The version is defined by the kafka.version property, that should be defined in the parent pom or "above".
+            Be aware, that the spring parent pom does already contain a kafka.version property, that will be used if nothing is defined elsewhere.
+            -->
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.56</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
