@@ -16,6 +16,8 @@ public class ContainerMetric implements AutoscalerMetric {
 	private String appId;
 	private String appName;
 	private String space;
+	private String spaceId;
+	private String organization;
 	private String organizationGuid;
 	private String metricName;
 	private String description;
@@ -35,13 +37,15 @@ public class ContainerMetric implements AutoscalerMetric {
 	 * @param instanceIndex {@linkplain #instanceIndex}
 	 * @param description {@linkplain #description}
 	 */
-	public ContainerMetric(long timestamp, String metricName, String appId, String appName, String space, String organizationGuid, int cpu, long ram, int instanceIndex,
-						   String description) {
+	public ContainerMetric(long timestamp, String metricName, String appId, String appName, String space, String spaceId,
+						   String organization, String organizationGuid, int cpu, long ram, int instanceIndex, String description) {
 		this.timestamp = timestamp;
 		this.metricName = metricName;
 		this.appId = appId;
 		this.appName = appName;
 		this.space = space;
+		this.spaceId = spaceId;
+		this.organization = organization;
 		this.organizationGuid = organizationGuid;
 		this.cpu = cpu;
 		this.ram = ram;
@@ -54,8 +58,8 @@ public class ContainerMetric implements AutoscalerMetric {
 	 * @param other metric to copy
 	 */
 	public ContainerMetric(ContainerMetric other) {
-		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(),
-				other.getOrganizationGuid(), other.getCpu(), other.getRam(), other.getInstanceIndex(), other.getDescription());
+		this(other.getTimestamp(), other.getMetricName(), other.getAppId(), other.getAppName(), other.getSpace(), other.getSpaceId(),
+				other.getOrganization(), other.getOrganizationGuid(), other.getCpu(), other.getRam(), other.getInstanceIndex(), other.getDescription());
 	}
 
 	/**
@@ -136,6 +140,22 @@ public class ContainerMetric implements AutoscalerMetric {
 
 	public void setSpace(String space) {
 		this.space = space;
+	}
+
+	public String getSpaceId() {
+		return spaceId;
+	}
+
+	public void setSpaceId(String spaceId) {
+		this.spaceId = spaceId;
+	}
+
+	public String getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(String organization) {
+		this.organization = organization;
 	}
 
 	public String getOrganizationGuid() {
