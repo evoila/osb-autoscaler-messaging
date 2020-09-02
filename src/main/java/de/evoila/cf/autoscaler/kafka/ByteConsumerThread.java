@@ -84,7 +84,6 @@ public class ByteConsumerThread extends Thread{
      */
     public void run() {
         Properties configProperties = new Properties();
-        configProperties.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 600000);
         configProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, host);
         configProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         configProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArrayDeserializer");
